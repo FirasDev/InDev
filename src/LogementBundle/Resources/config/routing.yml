@@ -1,0 +1,43 @@
+add_logement:
+    path:     /newlogement
+    defaults:
+        _controller: LogementBundle:Logement:addLogement
+        _locale: %locale%
+
+add_cite:
+    path:     /admin/cite
+    defaults: { _controller: LogementBundle:LogementAdmin:addcite }
+
+show_logement:
+    path:     /logements
+    defaults: { _controller: LogementBundle:Logement:showLogement }
+
+show_logement2:
+    path:     /showlogement
+    defaults: { _controller: LogementBundle:LogementAdmin:showLogement }
+
+mes_logements:
+    path:     /meslogements
+    defaults: { _controller: LogementBundle:Logement:mesLogement }
+
+details_logement:
+    path:     /details/{id}
+    defaults: { _controller: LogementBundle:Logement:detailsLogement }
+
+success:
+    path:     /success
+    defaults: { _controller: LogementBundle:Logement:success }
+
+reservations:
+    path:     /mesreservations
+    defaults: { _controller: LogementBundle:Logement:showReservation }
+
+showall:
+    path:     /all
+    defaults: { _controller: LogementBundle:Logement:showall }
+
+lunetics_locale_switcher:
+    path: /changeLocale/{_locale}
+    defaults:
+        _controller: lunetics_locale.switcher_controller:switchAction
+        _locale: '%locale%'

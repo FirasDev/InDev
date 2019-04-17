@@ -1,0 +1,36 @@
+{% extends 'baseback.html.twig' %}
+{% block body %}
+
+
+
+
+    <center>
+        <h1> un Travel Buddy ! n'est que le Debut</h1>
+        {{ form_start(form) }}
+        <table>
+            <tr> <td>Description:</td><td> {{ form_widget(form.description) }}</td></tr>
+            <tr><td>Destination preferé:</td><td>{{ form_widget(form.destination) }}</td></tr>
+            <tr><td>Date Debut:</td><td>{{ form_widget(form.dateDebut) }}</td></tr>
+            <tr><td>Date fin:</td><td>{{ form_widget(form.dateFin) }}</td></tr>
+            <tr><td>Photo :</td><td>{{ form_widget(form.imageFile) }}</td></tr>
+            <tr><td></td><td>{{ form_widget(form.Confirmer) }}</td></tr>
+            <td><button><a href ="{{path('travelbuddy_BuddysList')}}">reteur</a></button></td>
+
+        </table>
+        {{ form_end(form) }}
+    </center>
+
+    </div>
+
+    <style>
+
+
+
+
+
+    </style>
+
+
+
+
+{% endblock %}

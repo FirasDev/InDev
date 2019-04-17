@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+ <style>
+    .resize {
+    height: 90px !important;
+    width: 105px !important;
+    }
+ </style>
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <img src="{{ asset('Blog/image/carousel/7.png') }}" alt="">
+    </div>
+    <div class="col-lg-10 col-lg-offset-1">
+        <table id="myTable" style="width: 100% !important;"
+               class="table table-bordered table-condensed table-hover table-striped display responsive nowrap">
+            <thead>
+            <tr>
+                <th class="col-md-1 col-xs-1"> Titre</th>
+                <th class="col-md-1 col-xs-1"> Etat</th>
+                <th class="col-md-1 col-xs-1"> Affiche</th>
+                <th class="col-md-1 col-xs-1"> Action</th>
+
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    {% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/plugins.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/jquery.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/SmoothScroll.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/jquery.meanmenu.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/jquery.scrollToTop.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/jqBootstrapValidation.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/parallax.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/converter.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/contact.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/waypoints.min.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/jquery.counterup.js') }}"></script>
+    <script src="{{ asset('Blog/BlogAssets/js/wordfriendship/main.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ asset ('Blog/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset ('Blog/js/dataTables.responsive.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "{{ path('mesBlog_data_root') }}",
+                "sAjaxDataProp": "data",
+                "pageLength": 5,
+                columns: [
+                    {"data": "titreBlog"},
+                    {"data": "etatBlog"},
+                    {"data": "Affiche"},
+                    {"data": "Action"},
+
+                ],
+                "retrieve": true
+            });
+        });
+    </script>
+
+{% endblock %}

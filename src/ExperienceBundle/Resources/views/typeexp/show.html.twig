@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typeexp</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idtype</th>
+                <td>{{ typeExp.idType }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ typeExp.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typeexp_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('typeexp_edit', { 'idType': typeExp.idType }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

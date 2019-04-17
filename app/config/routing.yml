@@ -1,0 +1,60 @@
+
+logement:
+    resource: "@LogementBundle/Resources/config/routing.yml"
+    prefix:   /logement
+
+qr:
+    resource: "@GroupBundle/Resources/config/routing.yml"
+    prefix:   /qr
+
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
+travelbuddy:
+    resource: "@TravelbuddyBundle/Resources/config/routing.yml"
+    prefix:   /travelbuddy
+
+equipement:
+    resource: "@EquipementBundle/Resources/config/routing.yml"
+    prefix:   /equipement
+
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /event
+
+local_experience:
+    resource: "@ExperienceBundle/Resources/config/routing.yml"
+    prefix:   /experience
+
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+local:
+    resource: '@ExperienceBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+dwr_open_weather:
+    resource: "@DwrOpenWeatherBundle/Controller/"
+    type:     annotation
+
+show_profile:
+    path:     /profile/{id}
+    defaults: { _controller: "AppBundle:User:show" }
+
+main_admin:
+    path:     /admin
+    defaults: { _controller: "AppBundle:User:indexAdmin" }
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /TravelBuddyMessage
+
+
+
+

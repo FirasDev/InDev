@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <center>
+        <h1>Modifier votre groupe !</h1>
+        {{ form_start(form) }}
+        <table>
+            <tr> <td>Tile:</td><td> {{ form_widget(form.title) }}</td></tr>
+            <tr><td>Destination:</td><td>{{ form_widget(form.destination) }}</td></tr>
+            <tr><td><span id="date1">Date Debut:</span></td><td>{{ form_widget(form.dateDebut) }}</td></tr>
+            <tr><td><span id="date2">Date fin:</span></td><td>{{ form_widget(form.dateFin) }}</td></tr>
+            <tr><td>Plan:</td><td>{{ form_widget(form.plan) }}</td></tr>
+            <tr><td>Photo :</td><td>{{ form_widget(form.imageFile) }}</td></tr>
+            <tr><td></td><td>{{ form_widget(form.confirmer) }}</td></tr>
+
+
+        </table>
+        {{ form_end(form) }}
+
+        <td><button><a href ="{{path('travelbuddy_GroupsList')}}">reteur</a></button></td>
+        <br>
+        <img width="500" height="700" align="top right"  src="{{ asset("assets/images/travel-buddy.jpg" ) }}">
+        <br><br>
+
+
+        <script>
+            var date1 = new Date() ;
+            date1 =  document.getElementById("date1").value
+            var date2 =  document.getElementById("date2").value
+
+            console.log(date1) ;
+            if (date1 > date2) {
+
+                Console.log("yesy we did it");
+            }
+
+
+        </script>
+
+
+    </center>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <center>
+        <h1>Créer votre propre groupe !</h1>
+        {{ form_start(form) }}
+        <table>
+            <tr> <td>Tile:</td><td> {{ form_widget(form.title) }}</td></tr>
+            <tr><td>Destination:</td><td>{{ form_widget(form.destination) }}</td></tr>
+            <tr><td><span id="date1">Date Debut:</span></td><td>{{ form_widget(form.dateDebut) }}</td></tr>
+            <tr><td><span id="date2">Date fin:</span></td><td>{{ form_widget(form.dateFin) }}</td></tr>
+            <tr><td>Plan:</td><td>{{ form_widget(form.plan) }}</td></tr>
+            <tr><td>Photo :</td><td>{{ form_widget(form.imageFile) }}</td></tr>
+            <tr><td></td><td>{{ form_widget(form.confirmer) }}</td></tr>
+           <td> <td><button><a href ="{{path('travelbuddy_GroupsList')}}">reteur</a></button></td></td>
+
+        </table>
+        {{ form_end(form) }}
+
+
+        <br>
+        <img width="500" height="700" align="top right"  src="{{ asset("assets/images/travel-buddy.jpg" ) }}">
+<br><br>
+
+
+       <script>
+         var date1 = new Date() ;
+          date1 =  document.getElementById("date1").value
+         var date2 =  document.getElementById("date2").value
+
+          console.log(date1) ;
+           if (date1 > date2) {
+
+               Console.log("yesy we did it");
+           }
+
+
+       </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+
+
+body {
+        background-image:url("{{ asset("assets/images/retail-group-travel-650x500.jpg" ) }}");
+
+    }
+
+</style>
+
+
+    </center>
+{% endblock %}

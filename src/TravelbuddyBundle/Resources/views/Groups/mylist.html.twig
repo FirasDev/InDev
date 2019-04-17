@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+
+    {% block body %}
+
+        <h2 class="sc_title sc_title_iconed sc_align_center" style="margin-top:0px;margin-bottom:8px;text-align:center;"><span class="sc_title_icon sc_title_icon_top  sc_title_icon_small"><img src="wp-content/uploads/2015/04/top_title_bg.png" alt=""></span>Mes groupes</h2>
+        <br>
+
+        <div class="woocommerce columns-3 "><ul class="products columns-3">
+        {% for t in mygroups %}
+            <li class="post-753 product type-product status-publish has-post-thumbnail product_cat-new-york-city-the-usa product_tag-city product_tag-town product_tag-urban instock shipping-taxable purchasable product-type-simple">
+                <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div id ="ImageContainerr"><img width="564" height="370" src="{{ asset("assets/images/Buddy/"~ t.image ) }}"class="circular--square" /><h2 class="woocommerce-loop-product__title"> {{ t.title }}</h2></div>				<div class="product_cats">
+                        <a href="">{{ t.destination }}</a> 				</div>
+                    <div class="product_price">
+                       <span class="woocommerce-Price-amount amount"> <a href="{{path('travelbuddy_UpdateTravelGroup',{'id':t.idTravelGroup})}}"><button  class="test">Modifier</button></a> <a href="{{path('travelbuddy_DeleteGroup',{'id':t.idTravelGroup})}}"> <button class="test">Supprimer</button></a>
+                    </li>
+        {% endfor %}
+
+
+    </ul>
+
+
+
+            <img height="200" width="200" align="left" src="{{ asset("assets/images/AlsoMemberof.png" ) }}">
+
+
+
+            <br>
+
+            <div class="woocommerce columns-3 "><ul class="products columns-3">
+                    {% for t in mygroups %}
+                        <li class="post-753 product type-product status-publish has-post-thumbnail product_cat-new-york-city-the-usa product_tag-city product_tag-town product_tag-urban instock shipping-taxable purchasable product-type-simple">
+                            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><div id ="ImageContainerr"><img width="564" height="370" src="{{ asset("assets/images/Buddy/"~ t.image ) }}"class="circular--square" /><h2 class="woocommerce-loop-product__title"> {{ t.title }}</h2></div>				<div class="product_cats">
+                                    <a href="">Destination:{{ t.destination }}</a> 				</div>
+                                <div class="product_price">
+                       <span class="woocommerce-Price-amount amount">
+                        </li>
+                    {% endfor %}
+
+
+                </ul>
+
+
+
+
+
+
+
+
+    {% endblock %}

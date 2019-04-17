@@ -1,0 +1,64 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{{ form_start(form, { 'action': path('perform_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'id': 'profile_edit_form', 'onsubmit': 'performProfileEdit(event)' } }) }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+
+                {{ form_label(form.current_password) }}
+                {{ form_widget(form.current_password) }}
+                {{ form_errors(form.current_password) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+                {{ form_errors(form.firstname) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+                {{ form_errors(form.lastname) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                {{ form_label(form.birthDate) }}
+                {{ form_widget(form.birthDate) }}
+                {{ form_errors(form.birthDate) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ form_label(form.nationality) }}
+                {{ form_widget(form.nationality) }}
+                {{ form_errors(form.nationality) }}
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-primary" style="float:right; background-color:#AE1B24;"/>
+    </div>
+</div>
+{{ form_end(form) }}

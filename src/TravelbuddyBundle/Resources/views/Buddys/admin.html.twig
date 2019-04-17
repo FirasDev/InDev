@@ -1,0 +1,77 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+
+
+
+<center>
+    <table id="myTable" class="table">
+
+
+     <h3>  Travel Buddies</h3>
+
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+        <tr>
+            <thead class="thead-dark">
+            <th scope="col"> Nom Utilisateur</th>
+            <th scope="col"> Description </th>
+            <th scope="col"> disponible de </th>
+            <th scope="col">  vers          </th>
+            </thead>
+
+        </tr>
+        {% for t in travelbuddies %}
+
+
+
+                <td> {{ t.idUser.firstname }}</td>
+                <td> {{ t.description }}  </td>
+                <td>{{ t.dateDebut|date  ('Y-m-d') }}  </td>
+                <td> {{ t.dateDebut|date  ('Y-m-d') }}    </td>
+                <td><button class="btn btn-primary"><a href="{{path('travelbuddy_UpdateTravelBuddy',{'id':t.idTravelBuddy})}}">Modifier</a></button></td>
+            <td><button type="button" class="btn btn-danger" > <a href="{{path('travelbuddy_DeleteBuddy',{'id':t.idTravelBuddy})}}">Supprimer groupe</a></button></td>
+            </tr>
+        {% endfor %}
+    </table>
+</center>
+
+
+<style>
+
+    a:link {
+        color: white;
+    }
+
+
+</style>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = (document.getElementById("myInput")) ;
+
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+  {#  if is_granted('ROLE_ADMIN') %}
+        {% endif %} #}
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br><br><br><br>
+   You have no experiences shared on this platform.
+
+   <ul>
+      <li>
+         <a href="{{ path('experience_new') }}">Create a new experience</a>
+      </li>
+      <li>
+               <a href="{{ path('experience_index') }}">Back to the list</a>
+      </li>
+   </ul>
+{% endblock %}

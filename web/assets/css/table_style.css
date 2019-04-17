@@ -1,0 +1,68 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Francois+One);
+
+body{
+    color: white;
+    background-color: black;
+    font-family: 'Open Sans', sans-serif;
+
+}
+#wrapper{
+    margin: 0 auto;
+    width: 700px;
+}
+h1{
+    text-align: center;
+    font-family: 'Francois One', sans-serif;
+    font-size: 2.5em;
+    font-weight: normal;
+}
+.loading{
+    font-family: 'Francois One', sans-serif;
+    font-size: 2em;
+    padding-top: 30px;
+    text-align: center;
+}
+
+#searchfield{
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    padding: 10px;
+    color: #2b2b2b;
+    outline: none;
+    width: 590px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.7em;
+    margin-right: 10px;
+}
+.button{
+    width: 80px;
+    background-color: #b5e0fe;
+    color: white;
+    border: none;
+    height: 60px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Francois One', sans-serif;
+    font-size: 1.3em;
+    outline: none;
+}
+.button:hover{
+    cursor: pointer;
+    background-color: #1bbc9b;
+}
+
+.results tr[visible='false'],
+.no-result{
+    display:none;
+}
+
+.results tr[visible='true']{
+    display:table-row;
+}
+
+.counter{
+    padding:8px;
+    color:#ccc;
+}

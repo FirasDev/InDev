@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+
+
+
+            {% for t in travelbuddies %}
+            <div class="page_content_wrap">
+
+
+                <div class="content_wrap">
+                    <div class="content">
+                        <center>
+                        <h4>     {{ t.idUser.firstname }} {{ t.idUser.lastname }}</h4>
+
+                        <article class="itemscope post_item post_item_single post_featured_center post_format_standard post-92 post type-post status-publish format-standard has-post-thumbnail hentry category-aside-title category-aside-title-style category-blog-masonry-2-columns category-post-formats category-post-formats-with-sidebar tag-holiday tag-resort" itemscope="" itemtype="http://schema.org/Review">
+
+                            <img class="wp-post-image" width="400" height="400" align="center" alt="Las Terrazas Resort" src="{{ asset("assets/images/Buddy/"~ t.image ) }}" itemprop="image"></a></article>
+                                </div>
+                            </section>
+                            <div class="post_info">
+                                <span class="post_info_item post_info_posted">Disponible de : <td> {{ t.dateDebut|date ('Y-m-d') }}  </td></span>Vers<span class="post_info_item post_info_posted">vers : <td> {{ t.dateFin|date ('Y-m-d') }}  </td></span>
+                                <span class="post_info_item post_info_posted_by vcard" itemprop="author">
+                                <span class="post_info_item post_info_counters">	<a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 3" href="index.html#comments"><span class="post_counters_number">3</span></a>
+	</span>                <h4>Description :</h4>  {{ t.description }}
+                            </div>
+                  <h4>Destination preferé</h4> {{ t.destination }}<br>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<button><a href="{{path('travelbuddy_UpdateTravelBuddy',{'id':t.idTravelBuddy})}}">Update</a></button>
+                <button><a href="{{path('travelbuddy_DeleteBuddy',{'id':t.idTravelBuddy})}}">Delete</a></button>
+                </center>
+                        {% endfor %}
+
+
+
+
+        {% endblock %}

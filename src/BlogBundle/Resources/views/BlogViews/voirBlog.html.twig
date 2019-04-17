@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+
+    {% block stylesheets %}
+        <!-- Blog start  -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/themify-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/magnific-popup.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/meanmenu.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/BlogAssets/css/worldfriendship/swiper.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('Blog/css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+
+
+        <link rel="stylesheet" href="{{ asset ('Blog/css/jquery.dataTables.min.css') }}">
+        <!-- Blog end  -->
+    {% endblock %}
+
+{% block body %}
+    <section class="services-elements section-padding">
+        <div>
+            <img src="{{ asset('Blog/image/carousel/7.png') }}" alt="">
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <section class="head">
+                    <div class="container">
+                        <h2 class="text-center"><i class="fa fa-heart"></i>
+                            <span>Bienvenu dans le Blog {{ blog.titreBlog }}</span> <i class="fa fa-heart"></i>
+                        </h2>
+                    </div>
+                </section>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="panel panel-default">
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <img class="img-responsive center-block animated zoomInDown delay-1s"
+                                     src="{{ asset('Blog/image/affiches/'~ blog.imageBlog ) }}"/>
+                                <br>
+
+                                <br>
+                                <div class="product-widget">
+                                    <ul class="list-group">
+
+                                        </li>
+                                        <li class="list-group-item"> Date :
+                                            <span
+                                                    class="badge">{{ blog.dateAjoutBlog | date('Y-m-d H:m') }}	</span>
+
+                                        </li>
+                                        <li class="list-group-item"> Article : <span
+                                                    class="badge">{{ blog.articleBlog }}</span>
+                                        </li>
+
+                                        <li class="list-group-item"> Vues : <span
+                                                    class="badge">{{ blog.nombreVuBlog }}</span>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                            <a id="acount-btn" href="{{ path('pdf_blog_root',{'id':blog.idBlog}) }}">
+                                                Telecharger le blog en pdf </a>
+
+                                            {#   <a  id="acount-btn-r" href="{{  path('envoyer_ticket' , {'id':evenements.id}) }}" {% if check == 0 %} class="not-active"  {% endif %}> Je veux recevoir mon ticket </a>
+
+
+                                        </li>#}
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-10 col-lg-offset-1">
+
+                <div class="comment-wrap">
+                    <div class="photo">
+                        <div class="avatar"
+                             style="background-image: url('https://img.icons8.com/color/48/000000/user-male.png')"></div>
+                    </div>
+
+                </div>
+
+
+                {% if blog.commentaires %}
+                    {% for commentaire in blog.commentaires %}
+                        <div class="comment-wrap">
+                            <div class="photo">
+                                <div class="avatar"
+                                     style="background-image: url('https://img.icons8.com/color/48/000000/user-male.png')"></div>
+                            </div>
+                            <div class="comment-block">
+                                <p class="comment-text">{{ commentaire.texteCommentaire }}</p>
+                                <div class="bottom-comment">
+                                    <div class="comment-date">Ajouter Par : {{ commentaire.idUtilisateur.username }}
+                                        le {{ commentaire.dateCommentaire | date(' d F Y H:i') }}</div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+
+                <div class="comment-block">
+                    {% form_theme formCom 'bootstrap_3_layout.html.twig' %}
+                    {{ form_start(formCom) }}
+                    {{ form_widget(formCom.texteCommentaire) }}
+                    <br>
+                    {{ form_widget(formCom.valider) }}
+                    {{ form_end(formCom) }}
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+
+
+{% endblock %}

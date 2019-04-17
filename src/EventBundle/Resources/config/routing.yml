@@ -1,0 +1,35 @@
+creatEvent:
+  path:     /creatEvent
+  defaults: { _controller: EventBundle:Event:creatEvent }
+
+showEvent:
+  path:     /myevents
+  defaults: { _controller: EventBundle:Event:showEvent }
+
+detailsEvent:
+  path:     /details/{id}
+  defaults: { _controller: EventBundle:Event:detailsEvent }
+
+galleryEvent:
+  path:     /events
+  defaults: { _controller: EventBundle:Event:galleryEvent }
+
+detailsGalleryEvent:
+  path:     /eventdetails/{id}
+  defaults: { _controller: EventBundle:Event:detailsgalleryEvent }
+
+validation:
+    path:     /validation
+    defaults: { _controller: EventBundle:Reservation:validation }
+
+reservation:
+  path:     /history
+  defaults: { _controller: EventBundle:Reservation:history }
+
+index:
+    path:     /admin
+    defaults: { _controller: EventBundle:EventAdmin:index }
+
+stat:
+  path:     /admin/stat
+  defaults: { _controller: EventBundle:EventAdmin:Stat }

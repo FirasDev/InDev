@@ -1,0 +1,83 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+
+    <div class="col-md-12">
+    <h3>  Travel Groups</h3>$
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cherchez travel buddy..">
+    <center>
+
+        <button href="{{path('travelbuddy_Stats',{'id':t.idTravelBuddy})}}">Voir Stats</button>
+
+        <table id="myTable" class="table  width=50% align="center">
+
+
+            <tr>
+                <thead class="thead-dark">
+                <th scope="col"> Captaine de groupe</th>
+                <th scope="col"> Description </th>
+                <th scope="col"> disponible de </th>
+                <th scope="col">  plan          </th>
+                </thead>
+
+            </tr>
+            {% for t in groups %}
+
+
+
+                <td> {{ t.title }}  </td>
+                <td>{{ t.dateDebut|date  ('Y-m-d') }}  </td>
+                <td> {{ t.dateDebut|date  ('Y-m-d') }}    </td>
+                <td> {{ t.plan  }}    </td>
+                <td><button class="btn btn-primary"><a href="{{path('travelbuddy_UpdateGroupAdmin',{'id':t.idTravelGroup})}}">Modifier</a></button></td>
+
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+
+    </div>
+
+
+
+
+    <style>
+
+        a:link {
+            color: white;
+        }
+
+
+    </style>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = (document.getElementById("myInput")) ;
+
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+    {#  if is_granted('ROLE_ADMIN') %}
+          {% endif %} #}
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% endblock %}

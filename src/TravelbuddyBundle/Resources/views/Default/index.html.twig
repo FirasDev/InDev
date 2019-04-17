@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+
+
+
+
+{% block body %}
+
+
+
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+        <!-- Overlay -->
+        <div class="overlay"></div>
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#bs-carousel" data-slide-to="1"></li>
+            <li data-target="#bs-carousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item slides active">
+                <div class="slide-1"></div>
+                <div class="hero">
+                    <hgroup>
+                        <h1>Travel Buddy Section</h1>
+                        <h3>Voyager plus tout seul</h3>
+                    </hgroup>
+                    <button class="btn btn-hero btn-lg" role="button" href="{{path('travelbuddy_AjoutTravelBuddy')}}">>Deviens un TravelBuddy </button>
+                </div>
+            </div>
+            <div class="item slides">
+                <div class="slide-2"></div>
+                <div class="hero">
+                    <hgroup>
+                        <h1>Consulter Liste des travel groupes</h1>
+                        <h3>Voyager plus tout seul</h3>
+                    </hgroup>
+                    <button class="btn btn-hero btn-lg" role="button" href="{{path('travelbuddy_GroupsList')}}">Consulte liste des groupes</button>
+                </div>
+            </div>
+            <div class="item slides">
+                <div class="slide-3"></div>
+                <div class="hero">
+                    <hgroup>
+                        <h1>Deviens un travel Buddy !</h1>
+                        <h3>On doit voyayger ensemble</h3>
+                    </hgroup>
+                    <button class="btn btn-hero btn-lg" role="button"href="{{path('travelbuddy_AjoutTravelBuddy')}}">Deviens un TravelBuddy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sc_section_overlay" style="">
+        <div class="sc_section_content"><div class="sc_content content_wrap animated fadeInUp normal" data-animation="animated fadeInUp normal" style="margin-top:15px !important;margin-bottom:35px !important;">
+                <div class="columns_wrap sc_columns columns_fluid sc_columns_count_3">
+                    <div class="column-1_3 sc_column_item sc_column_item_1 odd first" style="text-align:center;">
+                        <figure class="sc_image  sc_image_shape_square"><img src="/wordfriendship/web/assets/wp-content/uploads/2015/04/testimonials_1.png" alt=""></figure>
+                        <h5 class="sc_title sc_title_regular sc_align_center" style="margin-top:10px;margin-bottom:5px;text-align:center;font-weight:600;"><a href="../team/index.html">CONSULT WITH AN EXPERT</a></h5>
+                        <div class="sc_section" style="margin-right:1.5em !important;margin-left:1.5em !important;">We’ll match you with an authority on your destination from our team of widely published writers who travel the globe.</div></div>
+                    <div class="column-1_3 sc_column_item sc_column_item_2 even" style="text-align:center;">
+                        <figure class="sc_image  sc_image_shape_square"><img src="/wordfriendship/web/assets/wp-content/uploads/2015/04/testimonials_3.png" alt=""></figure>
+                        <h5 class="sc_title sc_title_regular sc_align_center" style="margin-top:10px;margin-bottom:5px;text-align:center;font-weight:600;"><a href="../about-us/index.html">GET A CUSTOMIZED PLAN</a></h5>
+                        <div class="sc_section" style="margin-right:1.5em !important;margin-left:1.5em !important;">Our expert will map out your entire trip, with insider recommendations about where to go, what to do, how to get around and where to stay.</div></div>
+                    <div class="column-1_3 sc_column_item sc_column_item_3 odd" style="text-align:center;"><figure class="sc_image  sc_image_shape_square"><img src="/wordfriendship/web/assets/wp-content/uploads/2015/04/testimonials_2.png" alt=""></figure><h5 class="sc_title sc_title_regular sc_align_center" style="margin-top:10px;margin-bottom:5px;text-align:center;font-weight:600;"><a href="../gallery/index.html">BOOK YOUR TRIP</a></h5>
+                        <div class="sc_section" style="margin-right:1.5em !important;margin-left:1.5em !important;">Finally, our in-house specialists will seamlessly help you book the hotels or activities on your itinerary at the best available rates.</div></div></div></div></div></div>
+
+
+
+    <style>
+
+
+        .fade-carousel {
+            position: relative;
+            height: 100vh;
+        }
+        .fade-carousel .carousel-inner .item {
+            height: 100vh;
+        }
+        .fade-carousel .carousel-indicators > li {
+            margin: 0 2px;
+            background-color: #f39c12;
+            border-color: #f39c12;
+            opacity: .7;
+        }
+        .fade-carousel .carousel-indicators > li.active {
+            width: 10px;
+            height: 10px;
+            opacity: 1;
+        }
+
+        /********************************/
+        /*          Hero Headers        */
+        /********************************/
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 3;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+            -webkit-transform: translate3d(-50%,-50%,0);
+            -moz-transform: translate3d(-50%,-50%,0);
+            -ms-transform: translate3d(-50%,-50%,0);
+            -o-transform: translate3d(-50%,-50%,0);
+            transform: translate3d(-50%,-50%,0);
+        }
+        .hero h1 {
+            font-size: 6em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fade-carousel .carousel-inner .item .hero {
+            opacity: 0;
+            -webkit-transition: 2s all ease-in-out .1s;
+            -moz-transition: 2s all ease-in-out .1s;
+            -ms-transition: 2s all ease-in-out .1s;
+            -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+        }
+        .fade-carousel .carousel-inner .item.active .hero {
+            opacity: 1;
+            -webkit-transition: 2s all ease-in-out .1s;
+            -moz-transition: 2s all ease-in-out .1s;
+            -ms-transition: 2s all ease-in-out .1s;
+            -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+        }
+
+        /********************************/
+        /*            Overlay           */
+        /********************************/
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: #080d15;
+            opacity: .7;
+        }
+
+        /********************************/
+        /*          Custom Buttons      */
+        /********************************/
+        .btn.btn-lg {padding: 10px 40px;}
+        .btn.btn-hero,
+        .btn.btn-hero:hover,
+        .btn.btn-hero:focus {
+            color: #f5f5f5;
+            background-color: #ff8c2b;
+            border-color: #ff8c2b;
+            outline: none;
+            margin: 20px auto;
+        }
+
+        /********************************/
+        /*       Slides backgrounds     */
+        /********************************/
+        .fade-carousel .slides .slide-1,
+        .fade-carousel .slides .slide-2,
+        .fade-carousel .slides .slide-3 {
+            height: 100vh;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .fade-carousel .slides .slide-1 {
+            background-image: url("{{ asset("assets/images/slideshowImage_24.jpg" ) }}");
+        }
+        .fade-carousel .slides .slide-2 {
+            background-image: url("{{ asset("assets/images/travel1.jpg." ) }}");
+        }
+        .fade-carousel .slides .slide-3 {
+            background-image: url("{{ asset("assets/images/travel3.jpg" ) }}");
+        }
+
+        /********************************/
+        /*          Media Queries       */
+        /********************************/
+        @media screen and (min-width: 980px){
+            .hero { width: 980px; }
+        }
+        @media screen and (max-width: 640px){
+            .hero h1 { font-size: 4em; }
+        }
+
+    </style>
+
+{%  endblock %}

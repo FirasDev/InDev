@@ -1,0 +1,105 @@
+travelbuddy_BuddysIndex:
+    path:     /
+    defaults: { _controller: TravelbuddyBundle:Default:index }
+
+travelbuddy_BuddysList:
+    path:     /buddys/list
+    defaults: { _controller: TravelbuddyBundle:Buddys:list }
+
+travelbuddy_BuddysMyList:
+    path:     /buddys/mylist
+    defaults: { _controller: TravelbuddyBundle:Buddys:mylist }
+
+
+travelbuddy_AjoutTravelBuddytravelbuddy_AjoutTravelBuddy:
+    path:     /buddys/ajout
+    defaults: { _controller: TravelbuddyBundle:Buddys:ajout }
+
+travelbuddy_UpdateTravelBuddy:
+    path:     /buddys/update/{id}
+    defaults: { _controller: TravelbuddyBundle:Buddys:update }
+
+travelbuddy_AjoutTravelGroup:
+    path:     /groups/ajout
+    defaults: { _controller: TravelbuddyBundle:Groups:ajout }
+
+travelbuddy_GroupsList:
+    path:     /groups/list
+    defaults: { _controller: TravelbuddyBundle:Groups:list }
+
+travelbuddy_MyGroupsList:
+     path:     /groups/mylist
+     defaults: { _controller: TravelbuddyBundle:Groups:mylist }
+
+travelbuddy_DeleteBuddy:
+    path:     /buddy/delete/{id}
+    defaults: { _controller: TravelbuddyBundle:Buddys:delete }
+
+travelbuddy_AlerdyMember:
+     path:     /groups/alerdyMember
+     defaults: { _controller: TravelbuddyBundle:Groups:alerdyMember }
+
+travelbuddy_JoinGroup:
+    path:     /groups/joinGroup/{id}
+    defaults: { _controller: TravelbuddyBundle:Groups:joinGroup }
+
+travelbuddy_ChatGroups:
+    path:     /groups/message
+    defaults: { _controller: TravelbuddyBundle:Groups:chat }
+
+travelbuddy_DetailGroup:
+    path:     /groups/detaill/{id}
+    defaults: { _controller: TravelbuddyBundle:Groups:detaill }
+
+travelbuddy_RechercheParDestination:
+     path:     /groups/recherche
+     defaults: { _controller: TravelbuddyBundle:Groups:recherche }
+
+travelbuddy_Stats:
+     path:     /groups/stats
+     defaults: { _controller: TravelbuddyBundle:Groups:stats }
+
+
+travelbuddy_CongratzGroup:
+    path:     /groups/congratz
+    defaults: { _controller: TravelbuddyBundle:Groups:congratz }
+
+travelbuddy_LeaveGroup:
+    path:     /groups/leave/{id}
+    defaults: { _controller: TravelbuddyBundle:Groups:leave }
+
+travelbuddy_EspaceGroup:
+    path:     /groups/espace/{id}
+    defaults: { _controller: TravelbuddyBundle:Groups:espace }
+
+travelbuddy_ChatRoom:
+    path:     /groups/chatRoom
+    defaults: { _controller: TravelbuddyBundle:Groups:chatRoom }
+
+travelbuddy_DetailBuddy:
+    path:     /buddy/detaill/{id}
+    defaults: { _controller: TravelbuddyBundle:Buddys:detaill }
+
+travelbuddy_UpdateTravelGroup:
+    path:     /groups/update/{id}
+    defaults: { _controller: TravelbuddyBundle:Groups:update }
+
+travelbuddy_DeleteGroup:
+    path:     /groups/delete/{id}
+    defaults: { _controller: TravelbuddyBundle:Groups:delete }
+
+travelbuddy_AdminBuddy:
+    path:     /admin/buddy/
+    defaults: { _controller: TravelbuddyBundle:Buddys:admin }
+
+travelbuddy_AdminGroup:
+        path:     /admin/groups/
+        defaults: { _controller: TravelbuddyBundle:Groups:admin }
+
+travelbuddy_UpdateGroupAdmin:
+     path:     /admin/updateGroupe/{id}
+     defaults: { _controller: TravelbuddyBundle:Groups:updateAdmin }
+
+
+
+

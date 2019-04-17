@@ -1,0 +1,182 @@
+{% extends 'base.html.twig' %}
+
+
+    {% block body %}
+</br></br></br>
+<div class="tp-bgimg defaultimg " data-bgcolor="undefined" style="background-repeat: no-repeat; background-image: url(&quot;http://solaris.themerex.net/wp-content/uploads/revslider/post/slider_post_3.jpg&quot;); background-size: cover; background-position: center top; width: 100%; height: 100%; opacity: 1; visibility: inherit; z-index: 20;" src="http://solaris.themerex.net/wp-content/uploads/revslider/post/slider_post_3.jpg"></div>
+<center>   <h1>Travel groupes liste</h1></center>
+
+           <section class="post_author author vcard" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+               <table><tr>
+                       <td>
+            <div class="post_author_avatar"><a href="http://solaris.themerex.net/author/admin/" itemprop="image"><img id="Amitou" width="120" height="100"  src="{{ asset("assets/images/AmiticiaBot.gif" ) }}"></a></div>
+            <div class="post_author_info" itemprop="description"><span id='message' data-text=""> {% if app.user %}<p>Hey {{ app.user.firstname }} tu veux devenir mon ami?  <br> Amitoo est la pour vous aider à trouver votre destination une recherche vocale</p> {% else %} Amitoo est la pour vous aider a trouver votre destination avec une recherche vocale {% endif %}</span></div>
+               <img id="btnGiveCommand" width="60" height="70"  src="{{ asset("assets/images/Sound_Recorder.png" ) }}"> </section> </td>
+             <td> <div class="container" style="position: relative;float : top;" align="center">
+                   <input type="text"  placeholder="Chercher par destination" id="search-criteria"/>
+        </div> </td>
+
+            {% if app.user %}
+         <td>   <a> <div class="container" style="position: relative;float : right;">
+                     <a href="{{path('travelbuddy_AjoutTravelGroup')}}">
+                         <img class="img-responsive"  src="{{ asset("assets/images/CreerTravelgroupe.png" ) }}"></a>
+                </div></a></td>
+            {% endif %}
+        </section>
+    </tr>
+</table>
+
+
+
+                <form METHOD="post" name ="test" id ="test" action="{{ path('travelbuddy_RechercheParDestination') }}">
+                    <fieldset>
+                        <input type ="hidden" id="message1" name ="destination" >
+                        <br>
+                    </fieldset>
+
+                </form>
+                <br>
+
+
+
+
+
+            {% for t in groups %}
+
+                <article class="post_item post_item_extra post_featured_center post_format_standard odd post-1887 post type-post status-publish format-standard has-post-thumbnail hentry category-aside-title category-aside-title-style category-blog-masonry-2-columns tag-resort tag-travel">
+
+                    <div class="extra_post_wrap content_wrap">
+
+                        <div class="post_featured">
+                            <div class="post_thumb">
+                                <img class="wp-post-image" width="750" height="422" alt="Bernardus Lodge" src="{{ asset("assets/images/Buddy/"~ t.image ) }}"><div class="hover_wrap"><div class="link_wrap"><a class="hover_link icon-right-open" >Detaill</a></div></div>			</div>
+                        </div>
+
+                        <div class="post_content clearfix">
+                            <h3 class="post_title">
+                                <a href="http://solaris.themerex.net/2017/11/11/bernardus/">
+                                    <span class="first"></span>  <br> {{ t.title }}				</a>
+                            </h3>
+
+                            <div class="tags_info">
+                                <a href="http://solaris.themerex.net/tag/resort/">Destination : </a> <a href="http://solaris.themerex.net/tag/travel/">{{ t.destination }}</a>			</div>
+
+                            <div class="post_info">
+                                <span class="post_info_item post_info_posted">commence le: <a href="http://solaris.themerex.net/2017/11/11/bernardus/" class="post_info_date">{{ t.dateDebut|date  ('Y-m-d')}}</a></span>
+                                <span class="post_info_item post_info_posted_by">crée par: <a href="http://solaris.themerex.net/author/admin/" class="post_info_author"> {% if t.idOwner != null %}{{ t.idOwner.username }} {% endif %} </a></span>
+                                <span class="post_info_item post_info_counters">	<a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 0" href="http://solaris.themerex.net/2017/11/11/bernardus/#respond"><span class="post_counters_number">0</span></a>
+	</span>
+                            </div>
+
+                            <div class="post_descr">
+                                <a href="{{path('travelbuddy_DetailGroup',{'id':t.idTravelGroup})}}" class="sc_button sc_button_square sc_button_style_border sc_button_bg_custom sc_button_size_large sc_button_iconed icon-right-open ">Voir Détaill</a>			</div>
+
+                        </div>	<!-- /.post_content -->
+
+                    </div>
+
+                </article>
+            {% endfor %}
+                        </br></br>
+
+
+
+
+
+                <button><a href="http://localhost:3000/WordFreindShio/TravelBuddy/Chat/">Chat</a></button>
+
+            <br><br>
+
+            <h3 class="post_title"><a href="../2018/05/26/quote-post/index.html">Quote post</a></h3>
+            <div class="post_descr">
+                <blockquote cite="#" class="sc_quote  style_1" style=" background-image:url(../wp-content/uploads/2015/04/quote.jpg);"><p>I travel not to go anywhere. but to go.<br />
+                        I travel for travel’s sake.<br />
+                        the great affair is to move.</p><p class="sc_quote_title"><a href="#">- jason anderson</a></p></blockquote>
+
+            </div>
+
+        </center>
+
+
+
+
+
+        <script src="{{ asset('js/jquery.js')}}"></script>
+        <script>
+            $(document).ready(function(){
+
+                var search = $("#search-criteria");
+                var items  = $(".s");
+
+                $("#search-criteria").on("keyup", function(e){
+
+                    var v = search.val().toLowerCase();
+                    if(v == "") {
+                        items.show();
+                        return;
+                    }
+                    $.each(items, function(){
+                        var it = $(this);
+                        var lb = it.find("h3").text().toLowerCase();
+                        console.log( lb + " --- " + v);
+                        if(lb.indexOf(v) == -1)
+                            it.hide();
+                    });
+                });
+            });
+
+            //Now its time for some recognitation by op Allen //
+
+            var message = document.querySelector('#message');
+            var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+            var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+            var grammar = '#JSGF V1.0;' ;
+            var recognition = new SpeechRecognition();
+            var speechRecognitionList = new SpeechGrammarList();
+            speechRecognitionList.addFromString(grammar, 1);
+            recognition.grammars = speechRecognitionList;
+            recognition.lang = 'en-EN';
+            recognition.interimResults = false;
+            recognition.onresult = function(event) {
+                var last = event.results.length - 1;
+                var command = event.results[last][0].transcript;
+                message.textContent = 'Amitoo a entendu: ' + command + '.';
+                document.getElementById("message1").value = command.toLowerCase() ;
+
+
+
+
+
+            };
+            recognition.onspeechend = function() {
+                recognition.stop();
+            };
+            recognition.onerror = function(event) {
+                message.textContent = 'Error occurred in recognition: ' + event.error;
+            }
+            document.querySelector('#btnGiveCommand').addEventListener('click', function(){
+                recognition.start();
+                  message.textContent ="Amitou entrain de vous entendre ..."
+                //now the code for auto submit hahahha //
+                var t = setTimeout("document.test.submit();",6000);
+
+
+            });
+
+
+
+
+
+        </script>
+
+        <style>
+
+            td {
+                padding: 0.5em;
+                padding-right: 10em;
+            }
+        </style>
+
+{% endblock %}
+
+

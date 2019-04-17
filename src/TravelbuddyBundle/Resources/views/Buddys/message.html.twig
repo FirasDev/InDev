@@ -1,0 +1,11 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+<ul>
+    <li><a href="{{ url('fos_message_inbox') }}"> {%  trans from 'FOSMessageBundle' %}Boite de Reception {% endtrans %}</a></li>
+    <li><a href="{{ url('fos_message_sent') }}"> {%  trans from 'FOSMessageBundle' %}Sent {% endtrans %}</a></li>
+    <li><a href="{{ url('fos_message_deleted') }}"> {%  trans from 'FOSMessageBundle' %}Deletd {% endtrans %}</a>
+
+</ul>
+{% block fos_message_content %} {% endblock %}
+{% endblock %}

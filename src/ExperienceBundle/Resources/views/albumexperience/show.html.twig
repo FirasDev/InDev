@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Albumexperience</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idalbumexperience</th>
+                <td>{{ albumExperience.idAlbumExperience }}</td>
+            </tr>
+            <tr>
+                <th>Imageurl</th>
+                <td>{{ albumExperience.imageUrl }}</td>
+            </tr>
+            <tr>
+                <th>Idexperience</th>
+                <td>{{ albumExperience.idExperience }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('albumexperience_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('albumexperience_edit', { 'idAlbumExperience': albumExperience.idAlbumExperience }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

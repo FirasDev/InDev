@@ -1,0 +1,41 @@
+accueil_blog_root:
+    path:     /
+    defaults: { _controller: BlogBundle:Blog:accueilBlog }
+
+#CRUD Blog
+ajouter_blog_root:
+    path:     /ajouterBlog
+    defaults: { _controller: BlogBundle:Blog:ajouterBlog }
+
+modifier_blog_root:
+    path:     /modifierBlog
+    defaults: { _controller: BlogBundle:Blog:modifierBlog }
+
+supprimer_blog_root:
+    path:     /supprimerBlog
+    defaults: { _controller: BlogBundle:Blog:supprimerBlog }
+
+##############################################################################
+
+#mes Blog
+mesBlog_data_root:
+    path:     /mesBlog_data
+    defaults: { _controller: BlogBundle:Blog:mesBlogData }
+mesBlog_root:
+    path:     /mesBlog
+    defaults: { _controller: BlogBundle:Blog:mesBlog }
+##############################################################################
+
+#Voir Blog
+voir_blog_root:
+    path:     /voitBlog
+    defaults: { _controller: BlogBundle:Blog:voirBlog }
+
+valider_blog_root:
+    path:     /validerBlog
+    defaults: { _controller: BlogBundle:Blog:validerBlog }
+
+##############################################################################
+pdf_blog_root:
+    path:     /pdf
+    defaults: { _controller: BlogBundle:Blog:pdf }

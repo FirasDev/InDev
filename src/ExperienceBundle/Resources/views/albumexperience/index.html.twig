@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Albumexperiences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idalbumexperience</th>
+                <th>Imageurl</th>
+                <th>Idexperience</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for albumExperience in albumExperiences %}
+            <tr>
+                <td><a href="{{ path('albumexperience_show', { 'idAlbumExperience': albumExperience.idAlbumExperience }) }}">{{ albumExperience.idAlbumExperience }}</a></td>
+                <td>{{ albumExperience.imageUrl }}</td>
+                <td>{{ albumExperience.idExperience }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('albumexperience_show', { 'idAlbumExperience': albumExperience.idAlbumExperience }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('albumexperience_edit', { 'idAlbumExperience': albumExperience.idAlbumExperience }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('albumexperience_new') }}">Create a new albumExperience</a>
+        </li>
+    </ul>
+{% endblock %}

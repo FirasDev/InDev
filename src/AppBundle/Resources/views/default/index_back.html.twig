@@ -1,0 +1,81 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+    <h1>Les utilisateur de Amiticia : </h1>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+    <div class="panel ">
+    <div class="col-lg">
+        <div class="example-wrap">
+            <div class="example table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Pseudo</th>
+                        <th>Photo</th>
+                        <th>Date de Naissance</th>
+                        <th>Sexe</th>
+                        <th>Telephone</th>
+                        <th>Role</th>
+                        <th>Paramétres</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for u in users %}
+                    <tr>
+                        <td>{{ u.email }}</td>
+                        <td>{{ u.lastname }}</td>
+                        <td>{{ u.firstname }}</td>
+                        <td>{{ u.username }}</td>
+                        <td>
+                           {% if u.photoP |length < 4 %}
+                               <img style="width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    background-size: 55px 55px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.75);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;" src="{{ asset('assets/images/users/79700-200.png') }}">
+                               {% else %}
+                                   <img style="width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.75);
+    background-repeat: no-repeat;
+    background-size: cover;" src="{{ asset('assets/images/users/'~ u.photoP) }}">
+                                   {% endif %}
+
+                        </td>
+                        <td>{{ u.dateNaissance}}</td>
+                        <td>{{ u.sexe }}</td>
+                        <td>{{ u.tel }}</td>
+                        <td>{% if is_granted('ROLE_ADMIN') %}
+                        <span class="badge badge-danger"> Admin</span>
+                            {% elseif is_granted('ROLE_USER') %}
+                        <span class="badge badge-info"> Utilisateur</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a  href="#" class="edit btn btn-warning" id="edit">
+                                <span class="fa fa-edit"></span> Modifier</a>
+                            <a href="#" class="delete btn btn-danger">
+                                <span class="fa fa-trash"></span> Supprimer</a>
+                            <a href="#" class="delete btn btn-success">
+                                <span class="fa fa-trash"></span> Voir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- End Example Basic -->
+    </div>
+    </div></div>
+    </div>
+{% endblock %}

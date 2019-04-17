@@ -1,0 +1,484 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+<title>Ajout d'une expérience</title>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap-datepicker.min.css')}}">
+
+
+    <style>
+        .top_panel_wrap{
+            background: url({{ asset("assets/wp-content/uploads/2015/05/menu_bg.jpg") }}) no-repeat center top #63cac5;
+            margin-top: 0px !important;
+            margin-bottom: 20px !important;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 300;
+        }
+
+        p {
+            color: #999;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        #wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .page-head-image {
+
+        }
+
+        .page-head-image img {
+            border-radius: 50%;
+        }
+
+        #form-trabalhe {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: normal;
+            margin-top: 15px;
+        }
+
+        input {
+            border: 2px solid #CCC !important;
+            height: 35px;
+            border-radius: 3px;
+            max-width: 100%;
+        }
+
+        .input-group-addon {
+            border: 2px solid #CCC !important;
+            border-right: 0px !important;
+        }
+
+
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+<style>
+    .button {
+        position: relative;
+        height: 60px;
+        width: 200px;
+        background: #00BCD4;
+        border-radius: 8px;
+        text-align: center;
+        margin: 200px auto 0 auto;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+    .submit,
+    .arrow {
+        display: inline-block;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+    .submit {
+        text-transform: uppercase;
+        margin: 14px 0 0 26px;
+    }
+
+    .arrow {
+        position: relative;
+        top: -3px;
+        opacity: 0;
+    }
+
+    .line {
+        height: 3px;
+        width: 20px;
+        border-radius: 6px;
+        background: #fff;
+    }
+
+    .top {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .bottom {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        margin-top: 10px;
+    }
+
+    .instructions {
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    .button:active {
+        -webkit-transform: scale(1.3);
+        -moz-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+
+    .button.hover .submit {
+        -webkit-transform: translateX(-90px);
+        -moz-transform: translateX(-90px);
+        transform: translateX(-90px);
+        opacity: 0;
+    }
+
+    .button.hover .arrow {
+        -webkit-transform: translateX(-70px);
+        -moz-transform: translateX(-70px);
+        transform: translateX(-70px);
+        opacity: 1;
+    }
+
+    .button.active .arrow {
+        opacity: 1;
+        -webkit-transform: rotate(90deg) translateY(70px);
+        -moz-transform: rotate(90deg) translateY(70px);
+        transform: rotate(90deg) translateY(70px);
+    }
+
+    .button.active {
+        background: #4CAF50;
+    }
+
+    .button.active .submit {
+        opacity: 0;
+    }
+
+    .button.active .top {
+        width: 34px;
+    }
+
+    .button.active .bottom {
+        margin: 14px 0 0 12px;
+    }
+</style>
+
+    <style>
+
+        .map {
+            width: 700px;
+            height: 380px;
+            margin: calc(50vh - 190px) auto;
+            box-shadow: 0 0 40px -10px black;
+            background: rgb(240, 240, 240);
+            font-family: 'Montserrat', sans-serif;
+            max-width: calc(100vw - 60px)
+        }
+
+        #map {
+            width: 65%;
+            height: 380px;
+            display: inline-block
+        }
+
+        .map-c {
+            float: right;
+            width: 35%;
+            height: 100%;
+            padding: 25px;
+            box-sizing: border-box
+        }
+
+        h1 {
+            margin: 0;
+            font-weight: normal;
+            color: rgb(60, 60, 70);
+            font-size: 28px
+        }
+
+        p {
+            font-size: 13px;
+            margin-top: 20px;
+            margin-bottom: 30px
+        }
+
+        .det {
+            font-size: 12px;
+            margin-bottom: 15px
+        }
+
+        i {
+            float: left;
+            font-size: 18px !important;
+            margin: 0 8px 0 0
+        }
+
+        button {
+            margin: -15px 4px;
+            padding: 13px 9px;
+            display: inline-block;
+            cursor: pointer;
+            background: none;
+            color: #546973;
+            border: 2px solid #78909C;
+            transition: all 0.3s;
+            border-radius: 8px;
+            outline:0
+        }
+
+        button:hover {
+            border-color: rgb(90, 90, 90);
+            color: rgb(90, 90, 90)
+        }
+
+        button:after {
+            content: 'Experiences';
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            font-size: 11px;
+            margin-top: 8px
+        }
+
+        .fa-envelope:after {
+            content:'Email';
+            margin:8px 13px 0
+        }
+
+        .fa-map-marker:after {
+            content:'Pseudo';
+            margin:8px 13px 0
+        }
+
+        .fa-globe:after {
+            content:'Pays';
+            margin:8px 13px 0
+        }
+
+        @media only screen and (max-width: 720px) {
+            .map {
+                height: 450px;
+                margin: calc(50vh - 225px) auto;
+                overflow: hidden
+            }
+            #map {
+                width: 100%;
+                height: 200px;
+            }
+            .map-c {
+                float: right;
+                width: 100%;
+            }
+            button {
+                float: right;
+                margin-top: -75px
+            }
+        }
+
+        @media only screen and (max-width: 460px) {
+            p {
+                display: none
+            }
+            h1 {
+                margin-bottom:20px
+            }
+            button {
+                float: none;
+                margin-top: 10px
+            }
+            .det {
+                margin-bottom: 9px
+            }
+        }
+
+        #screenFiller{
+            margin-left: 5px;
+        }
+
+    </style>
+
+    <div id="wrapper" class="container" style="clear:both;!important;margin-top: 300px;min-width: 100%">
+
+
+        <figure class="page-head-image">
+            <img src="http://loremflickr.com/300/300/person" />
+        </figure>
+        <h1>Nouvelle Experience</h1>
+        <p>L'ajout d'une nouvelle expérience est le moyen de commencer à interagir avec la base d'utilisateurs d'Amiticia. Vous pouvez voir ici les expériences des autres et partager les vôtres.</p>
+        <div id="screenFiller">
+        <div class="row">
+            <div class="col-md-6">
+        {{ form_start(form, { 'attr': {'class': 'form'} }) }}
+        <fieldset>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="control-label" for="appbundle_experience[titreExp]">Titre</label>
+        {{ form_widget(form.titreExp, {'attr': {'placeholder': 'Titre Experience'} }) }}
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[descExp]">Description</label>
+        {{ form_widget(form.descExp) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[dateExp]">Date</label>
+        {{ form_widget(form.dateExp) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[evalExp]">Evaluation</label>
+        {{ form_widget(form.evalExp) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[imageFile]">S'il vous plaît nous montrer votre expérience : </label>
+        {{ form_widget(form.imageFile) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[season]">Saison</label>
+        {{ form_widget(form.season) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[typeExp]">Type</label>
+        {{ form_widget(form.typeExp) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label" for="appbundle_experience[idPays]">Pays</label>
+        {{ form_widget(form.idPays) }}
+    </div>
+    </div>
+            <div class="form-group">
+                {#<div class="col-lg">#}
+                    {#<div class="button">#}
+                        {#<button type="submit" class="submit">#}
+                            {#<h3>Créer</h3>#}
+                        {#</button>#}
+                        {#<div class="arrow">#}
+                            {#<div class="top line"></div>#}
+                            {#<div class="bottom line"></div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+
+                <button type="submit" class="submit" value="Valider">
+                </button>
+                </div>
+        </fieldset>
+    {{ form_end(form) }}
+            </div>
+            <div class="col-md-6 map">
+                    <div id="map"></div>
+                    <div class="map-c">
+                        <h1>AMITICIA</h1>
+                        <p>Vous êtes situé ici, pour découvrir des expériences à proximité, veuillez cliquer sur le bouton expériences ci-dessous.</p>
+                        <div class="det"><i class="fa fa-map-marker"></i> {{ app.user.username | capitalize}}</div>
+                        <div class="det" style="font-size: 11px"><i class="fa fa-envelope"></i> Amiticia@esprit.tn</div>
+                        <div class="det"><i class="fa fa-globe"></i> {{ app.user.nationalite.name }}</div>
+                        <div>
+                            <button class="fa fa-car"></button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js" type="text/javascript"></script>
+
+
+    {% block javascripts %}
+
+        <script src="{{asset('assets/js/jquery_3.3.1.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('assets/js/bootstrap-datepicker.min.js')}}"></script>
+    {% endblock %}
+
+    <script>
+        navigator.geolocation.getCurrentPosition(function(location) {
+
+
+
+
+
+            console.log(location.coords.latitude);
+            console.log(location.coords.longitude);
+            console.log(location.coords.accuracy);
+
+            // position we will use later
+            var lat = location.coords.latitude;
+            var lon = location.coords.longitude;
+            // initialize map
+            map = L.map('map').setView([lat, lon], 16);
+            // set map tiles source
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18,
+            }).addTo(map);
+            // add marker to the map
+            marker = L.marker([lat, lon]).addTo(map);
+            // add popup to the marker
+            marker.bindPopup("<b>Vous</b><br />êtes situé<br />ici maintenant").openPopup();})
+
+
+        $('.js-datepicker').datepicker({
+            format:'yyyy-mm-dd',
+            startDate: '-3d'
+        });
+
+        function hover() {
+            $(".button").on("mouseenter", function() {
+                return $(this).addClass("hover");
+            });
+        }
+
+        function hoverOff() {
+            $(".button").on("mouseleave", function() {
+                return $(this).removeClass("hover");
+            });
+        }
+
+        function active() {
+            $(".button").on("click", function() {
+                return $(this).addClass("active");
+            });
+        }
+
+        hover();
+        hoverOff();
+        active();
+    </script>
+
+
+
+{% endblock %}

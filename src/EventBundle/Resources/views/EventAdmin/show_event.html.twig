@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+
+<!-- Mirrored from getbootstrapadmin.com/remark/material/base/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Mar 2019 19:43:06 GMT -->
+<head>
+
+    <style>
+
+
+        /*
+
+RESPONSTABLE 2.0 by jordyvanraaij
+  Designed mobile first!
+
+If you like this solution, you might also want to check out the 1.0 version:
+  https://gist.github.com/jordyvanraaij/9069194
+
+*/
+        .responstable {
+            margin: 1em 0;
+            width: 100%;
+            overflow: hidden;
+            background: #FFF;
+            color: #024457;
+            border-radius: 10px;
+            border: 1px solid #167F92;
+        }
+        .responstable tr {
+            border: 1px solid #D9E4E6;
+        }
+        .responstable tr:nth-child(odd) {
+            background-color: #EAF3F3;
+        }
+        .responstable th {
+            display: none;
+            border: 1px solid #FFF;
+            background-color: #167F92;
+            color: #FFF;
+            padding: 1em;
+        }
+        .responstable th:first-child {
+            display: table-cell;
+            text-align: center;
+        }
+        .responstable th:nth-child(2) {
+            display: table-cell;
+        }
+        .responstable th:nth-child(2) span {
+            display: none;
+        }
+        .responstable th:nth-child(2):after {
+            content: attr(data-th);
+        }
+        @media (min-width: 480px) {
+            .responstable th:nth-child(2) span {
+                display: block;
+            }
+            .responstable th:nth-child(2):after {
+                display: none;
+            }
+        }
+        .responstable td {
+            display: block;
+            word-wrap: break-word;
+            max-width: 7em;
+        }
+        .responstable td:first-child {
+            display: table-cell;
+            text-align: center;
+            border-right: 1px solid #D9E4E6;
+        }
+        @media (min-width: 480px) {
+            .responstable td {
+                border: 1px solid #D9E4E6;
+            }
+        }
+        .responstable th, .responstable td {
+            text-align: left;
+            margin: .5em 1em;
+        }
+        @media (min-width: 480px) {
+            .responstable th, .responstable td {
+                display: table-cell;
+                padding: 1em;
+            }
+        }
+
+
+
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap material admin template">
+    <meta name="author" content="">
+
+    <title>Dashboard | Remark Material Admin Template</title>
+
+    <link rel="apple-touch-icon" href='{{ asset('assets/material/base/assets/images/apple-touch-icon.png') }}'>
+    <link rel="shortcut icon" href='{{ asset('assets/material/base/assets/images/favicon.ico') }}'>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href='{{ asset('assets/material/global/css/bootstrap.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/css/bootstrap-extend.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/base/assets/css/site.minfd53.css') }}'>
+
+    <!-- Skin tools (demo site only) -->
+    <link rel="stylesheet" href='{{ asset('assets/material/global/css/skintools.minfd53.css') }}'>
+    <script src="{{ asset('assets/material/base/assets/js/Plugin/skintools.minfd53.js') }}"></script>
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="{{ asset('assets/material/global/vendor/animsition/animsition.minfd53.css') }}">
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/asscrollable/asScrollable.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/switchery/switchery.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/intro-js/introjs.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/slidepanel/slidePanel.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/flag-icon-css/flag-icon.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/waves/waves.minfd53.css') }}'>
+
+    <!-- Plugins For This Page -->
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/chartist/chartist.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/jvectormap/jquery-jvectormap.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.minfd53.css') }}'>
+
+    <!-- Page -->
+    <link rel="stylesheet" href='{{ asset('assets/material/base/assets/examples/css/dashboard/v1.minfd53.css') }}'>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href='{{ asset('assets/material/global/fonts/material-design/material-design.minfd53.css') }}'>
+    <link rel="stylesheet" href='{{ asset('assets/material/global/fonts/brand-icons/brand-icons.minfd53.css') }}'>
+    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,700">
+
+
+    <!--[if lt IE 9]>
+    <script src="{{ asset('assets/material/global/vendor/html5shiv/html5shiv.min.js') }}"></script>
+    <![endif]-->
+
+    <!--[if lt IE 10]>
+    <script src="{{ asset('assets/material/global/vendor/media-match/media.match.min.js') }}"></script>
+    <script src="{{ asset('assets/material/global/vendor/respond/respond.min.js') }}"></script>
+    <![endif]-->
+
+    <!-- Scripts -->
+    <script src="{{ asset('assets/material/global/vendor/breakpoints/breakpoints.minfd53.js') }}"></script>
+    <script>
+        Breakpoints();
+    </script>
+</head>
+<body class="animsition dashboard">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
+                data-toggle="menubar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="hamburger-bar"></span>
+        </button>
+        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse"
+                data-toggle="collapse">
+            <i class="icon md-more" aria-hidden="true"></i>
+        </button>
+        <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
+            <img class="navbar-brand-logo" src="{{ asset('assets/material/base/assets/images/logo.png') }}" title="Remark">
+            <span class="navbar-brand-text hidden-xs-down"> Remark</span>
+        </div>
+        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
+                data-toggle="collapse">
+            <span class="sr-only">Toggle Search</span>
+            <i class="icon md-search" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="navbar-container container-fluid">
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+            <!-- Navbar Toolbar -->
+            <ul class="nav navbar-toolbar">
+                <li class="nav-item hidden-float" id="toggleMenubar">
+                    <a class="nav-link" data-toggle="menubar" href="#" role="button">
+                        <i class="icon hamburger hamburger-arrow-left">
+                            <span class="sr-only">Toggle menubar</span>
+                            <span class="hamburger-bar"></span>
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item hidden-sm-down" id="toggleFullscreen">
+                    <a class="nav-link icon icon-fullscreen" data-toggle="fullscreen" href="#" role="button">
+                        <span class="sr-only">Toggle fullscreen</span>
+                    </a>
+                </li>
+                <li class="nav-item hidden-float">
+                    <a class="nav-link icon md-search" data-toggle="collapse" href="#" data-target="#site-navbar-search"
+                       role="button">
+                        <span class="sr-only">Toggle Search</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown dropdown-fw dropdown-mega">
+                    <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false" data-animation="fade"
+                       role="button">Mega <i class="icon md-chevron-down" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu" role="menu">
+                        <div class="mega-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5>UI Kit</h5>
+                                    <ul class="blocks-2">
+                                        <li class="mega-menu m-0">
+                                            <ul class="list-icons">
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="advanced/animation.html">Animation</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/buttons.html">Buttons</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/colors.html">Colors</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/dropdowns.html">Dropdowns</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/icons.html">Icons</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="advanced/lightbox.html">Lightbox</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mega-menu m-0">
+                                            <ul class="list-icons">
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/modals.html">Modals</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/panel-structure.html">Panels</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="structure/overlay.html">Overlay</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/tooltip-popover.html">Tooltips</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="advanced/scrollable.html">Scrollable</a>
+                                                </li>
+                                                <li><i class="md-chevron-right" aria-hidden="true"></i>
+                                                    <a
+                                                            href="uikit/typography.html">Typography</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Media
+                                        <span class="badge badge-pill badge-success">4</span>
+                                    </h5>
+                                    <ul class="blocks-3">
+                                        <li>
+                                            <a class="thumbnail m-0" href="javascript:void(0)">
+                                                <img class="w-full" src="{{ asset('assets/material/global/photos/view-1-150x100.jpg') }}" alt="..." />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="thumbnail m-0" href="javascript:void(0)">
+                                                <img class="w-full" src="{{ asset('assets/material/global/photos/view-2-150x100.jpg') }}" alt="..." />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="thumbnail m-0" href="javascript:void(0)">
+                                                <img class="w-full" src="{{ asset('assets/material/global/photos/view-3-150x100.jpg') }}" alt="..." />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="thumbnail m-0" href="javascript:void(0)">
+                                                <img class="w-full" src="{{ asset('assets/material/global/photos/view-4-150x100.jpg') }}" alt="..." />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="thumbnail m-0" href="javascript:void(0)">
+                                                <img class="w-full" src="{{ asset('assets/material/global/photos/view-5-150x100.jpg') }}" alt="..." />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="thumbnail m-0" href="javascript:void(0)">
+                                                <img class="w-full" src="{{ asset('assets/material/global/photos/view-6-150x100.jpg') }}" alt="..." />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="mb-0">Accordion</h5>
+                                    <!-- Accordion -->
+                                    <div class="panel-group panel-group-simple" id="siteMegaAccordion" aria-multiselectable="true"
+                                         role="tablist">
+                                        <div class="panel">
+                                            <div class="panel-heading" id="siteMegaAccordionHeadingOne" role="tab">
+                                                <a class="panel-title" data-toggle="collapse" href="#siteMegaCollapseOne" data-parent="#siteMegaAccordion"
+                                                   aria-expanded="false" aria-controls="siteMegaCollapseOne">
+                                                    Collapsible Group Item #1
+                                                </a>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="siteMegaCollapseOne" aria-labelledby="siteMegaAccordionHeadingOne"
+                                                 role="tabpanel">
+                                                <div class="panel-body">
+                                                    De moveat laudatur vestra parum doloribus labitur sentire partes, eripuit praesenti
+                                                    congressus ostendit alienae, voluptati ornateque accusamus
+                                                    clamat reperietur convicia albucius.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel">
+                                            <div class="panel-heading" id="siteMegaAccordionHeadingTwo" role="tab">
+                                                <a class="panel-title collapsed" data-toggle="collapse" href="#siteMegaCollapseTwo"
+                                                   data-parent="#siteMegaAccordion" aria-expanded="false"
+                                                   aria-controls="siteMegaCollapseTwo">
+                                                    Collapsible Group Item #2
+                                                </a>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="siteMegaCollapseTwo" aria-labelledby="siteMegaAccordionHeadingTwo"
+                                                 role="tabpanel">
+                                                <div class="panel-body">
+                                                    Praestabiliorem. Pellat excruciant legantur ullum leniter vacare foris voluptate
+                                                    loco ignavi, credo videretur multoque choro fatemur
+                                                    mortis animus adoptionem, bello statuat expediunt naturales.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel">
+                                            <div class="panel-heading" id="siteMegaAccordionHeadingThree" role="tab">
+                                                <a class="panel-title collapsed" data-toggle="collapse" href="#siteMegaCollapseThree"
+                                                   data-parent="#siteMegaAccordion" aria-expanded="false"
+                                                   aria-controls="siteMegaCollapseThree">
+                                                    Collapsible Group Item #3
+                                                </a>
+                                            </div>
+                                            <div class="panel-collapse collapse" id="siteMegaCollapseThree" aria-labelledby="siteMegaAccordionHeadingThree"
+                                                 role="tabpanel">
+                                                <div class="panel-body">
+                                                    Horum, antiquitate perciperet d conspectum locus obruamus animumque perspici probabis
+                                                    suscipere. Desiderat magnum, contenta poena desiderant
+                                                    concederetur menandri damna disputandum corporum.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Accordion -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!-- End Navbar Toolbar -->
+
+            <!-- Navbar Toolbar Right -->
+            <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" data-animation="scale-up"
+                       aria-expanded="false" role="button">
+                        <span class="flag-icon flag-icon-us"></span>
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                            <span class="flag-icon flag-icon-gb"></span> English</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                            <span class="flag-icon flag-icon-fr"></span> French</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                            <span class="flag-icon flag-icon-cn"></span> Chinese</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                            <span class="flag-icon flag-icon-de"></span> German</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                            <span class="flag-icon flag-icon-nl"></span> Dutch</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
+                       data-animation="scale-up" role="button">
+              <span class="avatar avatar-online">
+                <img src="{{ asset('assets/material/global/portraits/5.jpg') }}" alt="...">
+                <i></i>
+              </span>
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon md-account" aria-hidden="true"></i> Profile</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon md-card" aria-hidden="true"></i> Billing</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon md-settings" aria-hidden="true"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon md-power" aria-hidden="true"></i> Logout</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
+                       aria-expanded="false" data-animation="scale-up" role="button">
+                        <i class="icon md-notifications" aria-hidden="true"></i>
+                        <span class="badge badge-pill badge-danger up">5</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+                        <div class="dropdown-menu-header">
+                            <h5>NOTIFICATIONS</h5>
+                            <span class="badge badge-round badge-danger">New 5</span>
+                        </div>
+
+                        <div class="list-group">
+                            <div data-role="container">
+                                <div data-role="content">
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                                                <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">A new order has been placed</h6>
+                                                <time class="media-meta" datetime="2017-06-12T20:50:48+08:00">5 hours ago</time>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                                                <i class="icon md-account bg-green-600 white icon-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Completed the task</h6>
+                                                <time class="media-meta" datetime="2017-06-11T18:29:20+08:00">2 days ago</time>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                                                <i class="icon md-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Settings updated</h6>
+                                                <time class="media-meta" datetime="2017-06-11T14:05:00+08:00">2 days ago</time>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                                                <i class="icon md-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Event started</h6>
+                                                <time class="media-meta" datetime="2017-06-10T13:50:18+08:00">3 days ago</time>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                                                <i class="icon md-comment bg-orange-600 white icon-circle" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Message received</h6>
+                                                <time class="media-meta" datetime="2017-06-10T12:34:48+08:00">3 days ago</time>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-menu-footer">
+                            <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
+                                <i class="icon md-settings" aria-hidden="true"></i>
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                                All notifications
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Messages"
+                       aria-expanded="false" data-animation="scale-up" role="button">
+                        <i class="icon md-email" aria-hidden="true"></i>
+                        <span class="badge badge-pill badge-info up">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+                        <div class="dropdown-menu-header" role="presentation">
+                            <h5>MESSAGES</h5>
+                            <span class="badge badge-round badge-info">New 3</span>
+                        </div>
+
+                        <div class="list-group" role="presentation">
+                            <div data-role="container">
+                                <div data-role="content">
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                          <span class="avatar avatar-sm avatar-online">
+                            <img src="{{ asset('assets/material/global/portraits/2.jpg') }}" alt="..." />
+                            <i></i>
+                          </span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Mary Adams</h6>
+                                                <div class="media-meta">
+                                                    <time datetime="2017-06-17T20:22:05+08:00">30 minutes ago</time>
+                                                </div>
+                                                <div class="media-detail">Anyways, i would like just do it</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                          <span class="avatar avatar-sm avatar-off">
+                            <img src="{{ asset('assets/material/global/portraits/3.jpg') }}" alt="..." />
+                            <i></i>
+                          </span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Caleb Richards</h6>
+                                                <div class="media-meta">
+                                                    <time datetime="2017-06-17T12:30:30+08:00">12 hours ago</time>
+                                                </div>
+                                                <div class="media-detail">I checheck the document. But there seems</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                          <span class="avatar avatar-sm avatar-busy">
+                            <img src="{{ asset('assets/material/global/portraits/4.jpg') }}" alt="..." />
+                            <i></i>
+                          </span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">June Lane</h6>
+                                                <div class="media-meta">
+                                                    <time datetime="2017-06-16T18:38:40+08:00">2 days ago</time>
+                                                </div>
+                                                <div class="media-detail">Lorem ipsum Id consectetur et minim</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
+                                        <div class="media">
+                                            <div class="pr-10">
+                          <span class="avatar avatar-sm avatar-away">
+                            <img src="{{ asset('assets/material/global/portraits/5.jpg') }}" alt="..." />
+                            <i></i>
+                          </span>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading">Edward Fletcher</h6>
+                                                <div class="media-meta">
+                                                    <time datetime="2017-06-15T20:34:48+08:00">3 days ago</time>
+                                                </div>
+                                                <div class="media-detail">Dolor et irure cupidatat commodo nostrud nostrud.</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-menu-footer" role="presentation">
+                            <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
+                                <i class="icon md-settings" aria-hidden="true"></i>
+                            </a>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                                See all messages
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item" id="toggleChat">
+                    <a class="nav-link" data-toggle="site-sidebar" href="javascript:void(0)" title="Chat"
+                       data-url="site-sidebar.tpl">
+                        <i class="icon md-comment" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- End Navbar Toolbar Right -->
+        </div>
+        <!-- End Navbar Collapse -->
+
+        <!-- Site Navbar Seach -->
+        <div class="collapse navbar-search-overlap" id="site-navbar-search">
+            <form role="search">
+                <div class="form-group">
+                    <div class="input-search">
+                        <i class="input-search-icon md-search" aria-hidden="true"></i>
+                        <input type="text" class="form-control" name="site-search" placeholder="Search...">
+                        <button type="button" class="input-search-close icon md-close" data-target="#site-navbar-search"
+                                data-toggle="collapse" aria-label="Close"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- End Site Navbar Seach -->
+    </div>
+</nav>
+<div class="site-menubar site-menubar-light">
+    <div class="site-menubar-body">
+        <div>
+            <div>
+                <ul class="site-menu" data-plugin="menu">
+                    <li class="site-menu-category">General</li>
+                    <li class="site-menu-item active">
+                        <a href="{{ path('homepage') }}">
+                            <i class="fas fa-home site-menu-icon md-view-compact" aria-hidden="true"></i>
+                            <span class="site-menu-title"> Acceuil</span>
+                        </a>
+                    </li>
+
+
+                    <li class="site-menu-category">Modules</li>
+
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon md-palette" aria-hidden="true"></i>
+                            <span class="site-menu-title">Experience</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
+                                <a href="{{ path('experience_list_back') }}">
+                                    <span class="site-menu-title">Les Experiences</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('comments_list_back') }}">
+                                    <span class="site-menu-title">Les commentaires</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('reports_list_back') }}">
+                                    <span class="site-menu-title">Les signalisations</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon md-format-color-fill" aria-hidden="true"></i>
+                            <span class="site-menu-title">Evennements</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item hidden-sm-down site-tour-trigger">
+                                <a href="{{ path('index') }}">
+                                    <span class="site-menu-title">Approuver</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('stat') }}">
+                                    <span class="site-menu-title">Statistiques</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon md-puzzle-piece" aria-hidden="true"></i>
+                            <span class="site-menu-title">Blog</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
+                                <a href="{{ path('homepage') }}">
+                                    <span class="site-menu-title">Alerts</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('homepage') }}">
+                                    <span class="site-menu-title">Ribbon</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('homepage') }}">
+                                    <span class="site-menu-title">Pricing Tables</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon md-widgets" aria-hidden="true"></i>
+                            <span class="site-menu-title">TravelBuddy</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
+                                <a href="{{ path('travelbuddy_AdminBuddy') }}">
+                                    <span class="site-menu-title">Travel Buddy</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('travelbuddy_AdminGroup') }}">
+                                    <span class="site-menu-title">Travel Group</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon md-comment-alt-text" aria-hidden="true"></i>
+                            <span class="site-menu-title">Logements</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
+                                <a href="{{ path('show_logement2') }}">
+                                    <span class="site-menu-title">Approuver Logement</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('add_cite') }}">
+                                    <span class="site-menu-title">Consulter cité</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon md-border-all" aria-hidden="true"></i>
+                            <span class="site-menu-title">Equipements</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item">
+                                <a href="{{ path('homepage') }}">
+                                    <span class="site-menu-title">Basic Tables</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item">
+                                <a href="{{ path('homepage') }}">
+                                    <span class="site-menu-title">Bootstrap Tables</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="site-menubar-footer">
+        <a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip"
+           data-original-title="Settings">
+            <span class="icon md-settings" aria-hidden="true"></span>
+        </a>
+        <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
+            <span class="icon md-eye-off" aria-hidden="true"></span>
+        </a>
+        <a href="{{ path('fos_user_security_logout') }}" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
+            <span class="icon md-power" aria-hidden="true"></span>
+        </a>
+    </div>
+</div>
+
+<div class="site-gridmenu">
+    <div>
+        <div>
+            <ul>
+                <li>
+                    <a href="apps/mailbox/mailbox.html">
+                        <i class="icon md-email"></i>
+                        <span>Mailbox</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="apps/calendar/calendar.html">
+                        <i class="icon md-calendar"></i>
+                        <span>Calendar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="apps/contacts/contacts.html">
+                        <i class="icon md-account"></i>
+                        <span>Contacts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="apps/media/overview.html">
+                        <i class="icon md-videocam"></i>
+                        <span>Media</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="apps/documents/categories.html">
+                        <i class="icon md-receipt"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="apps/projects/projects.html">
+                        <i class="icon md-image"></i>
+                        <span>Project</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="apps/forum/forum.html">
+                        <i class="icon md-comments"></i>
+                        <span>Forum</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i class="icon md-view-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Page -->
+<div class="content" style="
+    padding-left: 150px;
+    padding-top: 90px;
+height: 100%;
+">
+
+
+    <center><table class="responstable" style="width: 80%">
+
+        <tr>
+            <th>Image</th>
+            <th>nomEvent</th>
+            <th>Pays</th>
+            <th>Prix</th>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>Approuver</th>
+
+        </tr>
+
+            {% for ev in events %}
+        <tr>
+            <td><img src="{{ asset('images/') }}{{ ev.url }}" alt=""  style="max-width: 80%;max-height: 80%"></td>
+            <td>{{ ev.Nom }}</td>
+
+            <td>{{ ev.Lieu }}</td>
+
+            <td>{{ ev.frais }}</td>
+
+            <td>{{ ev.dateDebut }}</td>
+
+                <td>{{ ev.dateFin }}</td>
+
+
+            <td>
+                <form method="post" >
+                    {% if (ev.isapproved == true) %}
+                <button type="submit" name="approuve" class="btn-danger" value="{{ ev.idEvent }}" disabled>Approuver</button>
+                {% else %}
+                    <button type="submit" name="approuve" class="btn-primary" value="{{ ev.idEvent }}" >Approuver</button>
+                    {% endif %}
+
+
+</form>
+                    </td>
+        </tr>
+            {% endfor %}
+
+    </table>
+    </center>
+
+
+</div>
+<!-- End Page -->
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="site-footer-legal">© 2018 <a href="https://themeforest.net/item/remark-responsive-bootstrap-admin-template/11989202">Remark</a></div>
+    <div class="site-footer-right">
+        Crafted with <i class="red-600 icon md-favorite"></i> by <a href="https://themeforest.net/user/creation-studio">Creation Studio</a>
+    </div>
+</footer>
+<!-- Core  -->
+<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{{ asset('assets/material/global/vendor/babel-external-helpers/babel-external-helpersfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/jquery/jquery.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/popper-js/umd/popper.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/bootstrap/bootstrap.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/animsition/animsition.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/mousewheel/jquery.mousewheel.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/asscrollbar/jquery-asScrollbar.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/asscrollable/jquery-asScrollable.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/ashoverscroll/jquery-asHoverScroll.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/waves/waves.minfd53.js') }}"></script>
+
+<!-- Plugins -->
+<script src="{{ asset('assets/material/global/vendor/switchery/switchery.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/intro-js/intro.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/screenfull/screenfull.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/slidepanel/jquery-slidePanel.minfd53.js') }}"></script>
+
+<!-- Plugins For This Page -->
+<script src="{{ asset('assets/material/global/vendor/chartist/chartist.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/jvectormap/jquery-jvectormap.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-enfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/matchheight/jquery.matchHeight-minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/vendor/peity/jquery.peity.minfd53.js') }}"></script>
+
+<!-- Scripts -->
+<script src="{{ asset('assets/material/global/js/State.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Component.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Plugin.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Base.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Config.minfd53.js') }}"></script>
+
+<script src="{{ asset('assets/material/base/assets/js/Section/Menubar.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/base/assets/js/Section/GridMenu.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/base/assets/js/Section/Sidebar.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/base/assets/js/Section/PageAside.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/base/assets/js/Plugin/menu.minfd53.js') }}"></script>
+
+<!-- Config -->
+<script src="{{ asset('assets/material/global/js/config/colors.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/base/assets/js/config/tour.minfd53.js') }}"></script>
+<script>
+    Config.set('assets', 'assets');
+</script>
+
+<!-- Page -->
+
+<script src="{{ asset('assets/material/base/assets/js/Site.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Plugin/asscrollable.minfd53.js') }}"></script>
+
+<script src="{{ asset('assets/material/global/js/Plugin/slidepanel.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Plugin/switchery.minfd53.js') }}"></script>
+
+<script src="{{ asset('assets/material/global/js/Plugin/matchheight.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Plugin/jvectormap.minfd53.js') }}"></script>
+<script src="{{ asset('assets/material/global/js/Plugin/peity.minfd53.js') }}"></script>
+
+
+<script src="{{ asset('assets/material/base/assets/examples/js/dashboard/v1.minfd53.js') }}"></script>
+
+
+<!-- Google Analytics -->
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js',
+        'ga');
+
+    ga('create', 'UA-65522665-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+
+
+<!-- Mirrored from getbootstrapadmin.com/remark/material/base/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Mar 2019 19:43:59 GMT -->
+</html>

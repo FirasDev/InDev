@@ -1,0 +1,102 @@
+
+pays_list:
+    path:     /pays
+    defaults: { _controller: "ExperienceBundle:Pays:index" }
+
+type_exp_list:
+    path:     /types
+    defaults: { _controller: "ExperienceBundle:TypeExp:index" }
+
+user_rating_exp_list:
+    path:     /rating
+    defaults: { _controller: "ExperienceBundle:UserRating:index" }
+
+album_experience_list:
+    path:     /album
+    defaults: { _controller: "ExperienceBundle:AlbumExperience:index" }
+
+comm_exp_list:
+    path:     /commentaire
+    defaults: { _controller: "ExperienceBundle:CommExp:index" }
+
+experience_list:
+    path:     /
+    defaults: { _controller: "ExperienceBundle:Experience:index" }
+
+experience_new:
+    path:     /new
+    defaults: { _controller: "ExperienceBundle:Experience:new" }
+
+experience_current_user:
+    path:     /MyExperiences
+    defaults: { _controller: "ExperienceBundle:Experience:myExperience" }
+
+#experience_follow:
+#    path:     /follow
+#    defaults: { _controller: "ExperienceBundle:Experience:followExp" }
+
+experience_season:
+    path:     /season/{Season}
+    defaults: { _controller: "ExperienceBundle:Experience:ExperienceBySeason" }
+
+pays_meteo:
+    path:     /meteo/{name}
+    defaults: { _controller: "ExperienceBundle:Pays:PaysMeteo" }
+
+pays_list:
+    path:     /pays
+    defaults: { _controller: "ExperienceBundle:Pays:PaysShow" }
+
+my_meteo:
+    path:     /meteo
+    defaults: { _controller: "ExperienceBundle:Pays:index" }
+
+comment_delete:
+    path:     /deletecom/{commExp}
+    defaults: { _controller: "ExperienceBundle:CommExp:delcomm" }
+
+comment_edit:
+    path:     /edit/{idCommExp}
+    defaults: { _controller: "ExperienceBundle:CommExp:editcomm" }
+
+experience_list_back:
+    path:     /admin/
+    defaults: { _controller: "ExperienceBundle:Experience:listback" }
+
+comment_report:
+    path:     /reporting
+    defaults: { _controller: "ExperienceBundle:CommExp:reporting" }
+
+comments_list_back:
+    path:     /admin/comments
+    defaults: { _controller: "ExperienceBundle:CommExp:listback" }
+
+reports_list_back:
+    path:     /admin/comments/reports
+    defaults: { _controller: "ExperienceBundle:CommExp:reportsback" }
+
+notfication:
+    path:     /notification
+    defaults: { _controller: "ExperienceBundle:Notification:AllNotificationJson" }
+    methods:  ['GET','POST']
+
+notfication_status:
+    path:     /notification_status
+    defaults: { _controller: "ExperienceBundle:Notification:UpdateNotificationJson" }
+    methods:  ['GET','POST']
+
+experience_follow:
+    path:     /follow
+    defaults: { _controller: "ExperienceBundle:Experience:followExp" }
+
+experience_unfollow:
+    path:     /unfollow
+    defaults: { _controller: "ExperienceBundle:Experience:unfollowExp" }
+
+pays_meteo_stat:
+    path:     /meteo/{name}/stats
+    defaults: { _controller: "ExperienceBundle:Pays:PaysMeteoStats" }
+
+experience_delete:
+    path:     /delete/{idExperience}
+    defaults: { _controller: "ExperienceBundle:Experience:deleting" }

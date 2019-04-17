@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+/* Responsive styles
+-------------------------------------------------------------- */
+
+/*
+Apple iPhone 5, 5S & 5C 
+Apple iPod Touch (5th generation)
+*/
+@media (min-width: 1136px) and (max-width: 1279px) {
+	body {	font-size: 14px; }
+}
+
+
+/*
+Apple iPhone 4 & 4S
+Apple iPod Touch (4th generation)
+*/
+@media (min-width: 960px) and (max-width: 1135px) {
+	body { font-size: 14px; }
+	h1 { font-size:3.5em; }
+	h2 { font-size:2.8em; }
+	h3 { font-size:2em; }
+	h4 { font-size:1.2em; }
+	h5 { font-size:1.1em; }
+	h6 { font-size:1em; }
+
+	/* Menu area */
+	.menu_main_wrap .menu_main_nav > li { font-size: 13px; margin: 0 10px 0 0; }
+    .login_wrap .popup_link { font-size: 13px; }
+
+	/* Post parts */
+	.post_rating .reviews_star {
+		font-size:1em;
+	}
+	/* Footer */
+	.contacts_wrap .contacts_address {
+		font-size: 1em;
+	}
+}
+
+
+/*
+Sony Xperia
+LG Optimus
+Blackberry Storm 3, Torch 9850 & Torch 9860
+Nokia Lumia 610, 710 & 800
+HTC Desire, Desire Z, Desire S & One V
+Samsung Galaxy
+*/
+@media (min-width: 800px) and (max-width: 959px) {
+    body { font-size: 13px; }
+    h1 { font-size:3em; }
+    h2 { font-size:2.5em; }
+    h3 { font-size:2em; }
+    h4 { font-size:1.3em; }
+    h5 { font-size:1.2em; }
+    h6 { font-size:1em; }
+
+	/* Post parts */
+	.post_rating .reviews_star {
+		font-size:1em;
+	}
+
+	/* Footer */
+	.contacts_wrap .contacts_address {
+		font-size: 1.2em;
+	}
+}
+
+
+/*
+Portrait orientation
+
+Sony Xperia
+LG Optimus
+Blackberry Storm 3, Torch 9850 & Torch 9860
+Nokia Lumia 610, 710 & 800
+HTC Desire, Desire Z, Desire S & One V
+Samsung Galaxy
+*/
+@media (min-width: 480px) and (max-width: 799px) {
+    body { font-size: 13px; }
+    h1 { font-size:2.5em; }
+    h2 { font-size:2em; }
+    h3 { font-size:2em; }
+    h4 { font-size:1.4em; }
+    h5 { font-size:1.2em; }
+    h6 { font-size:1em; }
+
+	/* Footer */
+	.contacts_wrap .contacts_address {
+		font-size: 1.2em;
+	}
+}
+
+
+/*
+Very common low res
+*/
+@media (max-width: 479px) {
+    body { font-size: 12px; }
+    h1 { font-size:2.5em; }
+    h2 { font-size:2em; }
+    h3 { font-size:2em; }
+    h4 { font-size:1.4em; }
+    h5 { font-size:1.2em; }
+    h6 { font-size:1em; }
+
+	/* Post parts */
+	.post_rating .reviews_star {
+		font-size:1em;
+	}
+
+	/* Footer */
+	.contacts_wrap .contacts_address {
+		font-size: 1em;
+	}
+	
+	/* Widgets */
+	.widget_area .reviews_block .reviews_summary .reviews_criteria {
+		font-size:0.75em;
+	}
+}

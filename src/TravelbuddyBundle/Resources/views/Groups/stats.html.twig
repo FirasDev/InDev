@@ -1,0 +1,98 @@
+{%  extends 'baseback.html.twig' %}
+
+{% block body %}
+
+
+
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+
+<div align="center">
+<canvas  id="myChart" width="600" height="600"></canvas>
+    <button href="{{path('travelbuddy_AdminGroup')}}"> Reteur</button>
+</div>
+
+
+
+<script>
+
+
+    var destinations = [] ;
+    {% for t in groups %}
+    destinations.push( '{{ t.destination }}');  //getting destinations into an array //
+    {%  endfor %}
+
+//here im getting a map for destinations as key and their occurances as a value
+   var destinationAndOccur =  destinations.reduce((acc, val) => acc.set(val, 1 + (acc.get(val) || 0)), new Map());
+
+
+
+    var dest = Array.from( destinationAndOccur.keys() ); //getting the destinations keys into an array
+    var nbr = Array.from(destinationAndOccur.values()) ; //gettings the nbr into an array
+
+  //Plotting time ..//
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dest,
+            datasets: [{
+                label: '# Nombre de groupe',
+                data: nbr,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 0, 255, 0.2)',
+                    'rgba(199, 21, 133, 0.0)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 0, 255, 1)',
+                    'rgb(199, 21, 133, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {   title: {
+            display: true,
+            text: 'Top Destination visé par les groupes de voyage '
+        },
+
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            responsive: false
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+{%  endblock %}

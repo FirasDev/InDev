@@ -1,0 +1,29 @@
+group_homepage:
+    path:     /group
+    defaults: { _controller: GroupBundle:Group:ajouter }
+
+forums_listpage:
+    path:     /list/{id}
+    defaults: { _controller: GroupBundle:Group:list }
+forums_commentpage:
+    path:     /comment/{id}
+    defaults: { _controller: GroupBundle:commentaire:ajoutercom }
+
+
+testmod:
+    path:     /testmod/{id}
+    defaults: { _controller: GroupBundle:Group:modifiertest }
+
+suppAr:
+    path:     /suppAr/{id}
+    defaults: { _controller: GroupBundle:Group:supprimerAr }
+
+
+testmodcomm:
+    path:     /testmodcomm/{id}
+    defaults: { _controller: GroupBundle:commentaire:modifiercomm }
+
+suppcom:
+    path:     /supprimercomm/{id}
+    defaults: { _controller: GroupBundle:commentaire:supprimercomm }
+

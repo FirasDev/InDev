@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userratingexps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Iduserratingexp</th>
+                <th>Rating</th>
+                <th>Iduser</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userRatingExp in userRatingExps %}
+            <tr>
+                <td><a href="{{ path('userratingexp_show', { 'idUserRatingExp': userRatingExp.idUserRatingExp }) }}">{{ userRatingExp.idUserRatingExp }}</a></td>
+                <td>{{ userRatingExp.rating }}</td>
+                <td>{{ userRatingExp.idUser }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userratingexp_show', { 'idUserRatingExp': userRatingExp.idUserRatingExp }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userratingexp_edit', { 'idUserRatingExp': userRatingExp.idUserRatingExp }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userratingexp_new') }}">Create a new userRatingExp</a>
+        </li>
+    </ul>
+{% endblock %}

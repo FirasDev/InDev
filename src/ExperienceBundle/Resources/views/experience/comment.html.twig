@@ -1,0 +1,157 @@
+
+
+
+
+    {% for c in comments %}
+
+        <div class="comment" >
+            <div class="icon-holder">
+                <div id="note_Created_By_Icon" class="icon" style="background-image:url('{{ asset('assets/images/users/'~ c.idUser.photoP) }}');background-size: 50%;background-repeat: no-repeat;background-size: cover;">
+                </div>
+            </div>
+            <a href="{{ path('show_profile', { 'id': c.idUser.id }) }}">
+                <h4>{{ c.idUser.username | capitalize }}</h4></a>
+            {% if c.derniereModification is null %}
+                <p class=""> &nbsp;</p>
+            {% else %}
+                <p class=""> <span style="font-weight: bold;">Commentaire Modifié le :</span> {{ c.derniereModification |date('Y-m-d H:i')}}</p>
+            {% endif %}
+            <p id="{{ c.idCommExp }}edit"  style="font-weight: bold;color: black">{{ c.comment }}</p>
+            <p class="comment-time">{{ c.commentDate |date('Y-m-d')}}</p>
+            {% if c.idUser == app.User %}
+                <style>
+                    .save{
+                        display: none;
+                    }
+                </style>
+            <button class="edit btn btn-warning" id="{{ c.idCommExp }}" onclick = "editFunction(this.id);">
+                <span class="fa fa-edit"></span> Modifier</button>
+            <a href="{{ path('comment_delete', { 'commExp': c.idCommExp }) }}" class="delete btn btn-danger">
+                <span class="fa fa-trash"></span> Supprimer</a>
+        {% elseif reports is defined %}
+
+                {% if reports == null %}
+                    <button  class="edit btn btn-danger" id="{{ c.idCommExp }}" onclick = "snitchFunction(this.id);" style="  background: #A9A9A9;
+  border-color: #A9A9A9;">
+                        <span class="fa fa-flag"></span> Signaler</button>
+                {% elseif reports > 0 %}
+            {% for nbreport in reports %}
+                    {% if nbreport.reporter == app.User %}
+                        <button  class="edit btn btn-dark" id="reported" style="  background: #000000;
+  border-color: #000000;">
+                            <span class="fa fa-flag"></span> Signalé</button>
+                    {% endif %}
+            {% endfor %}
+                {% else %}
+                <button  class="edit btn btn-danger" id="report">
+                    <span class="fa fa-flag"></span> Signaler</button>
+                {% endif %}
+        {% else %}
+                <button  class="edit btn btn-danger" id="report">
+                    <span class="fa fa-flag"></span> Signaler</button>
+        {% endif %}
+            <button class="btn btn-success save" id="{{ c.idCommExp }}save" onclick = "saveFunction(this.id);"><span class="fa fa-save"></span> Sauvegarder</button>
+        </div>
+        <script>
+
+            // new modif commentaire
+
+            function editFunction(current_id){
+                setInterval(function(){
+                    getComments();
+                },5000);
+                $('#'+current_id).hide();
+                $('#'+current_id+'edit').each(function(){
+                    var content = $(this).html();
+                    $(this).html('<textarea id="editedcomm">' + content + '</textarea>');
+                });
+
+                $('#'+current_id+'save').show();
+            }
+
+            function saveFunction(current_id){
+
+
+
+                $.ajax({
+                    type: "post",
+                    url: "{{ path('comment_edit', { 'idCommExp': c.idCommExp }) }}",
+                    data : {comment : $('#editedcomm').val(), idCommExp: current_id },
+                    success: function (data) {
+
+                    }
+                });
+
+                setTimeout(function() {
+                        getComments();
+                    }, 3000);
+
+                $('#'+current_id+'save').hide();
+
+
+            }
+
+
+
+
+//            modifier commentaire
+
+//            $('#edit').click(function(){
+//                clearInterval(interval);
+//                $('#edit').hide();
+//                $('#MyComment').each(function(){
+//                    var content = $(this).html();
+//                    $(this).html('<textarea id="editedcomm">' + content + '</textarea>');
+//                });
+//
+//                $('#save').show();
+//                clearInterval();
+//                $('.info').fadeIn('fast');
+//            });
+
+            {#$('#save').click(function(){#}
+                {#interval = setInterval(function(){#}
+                    {#getComments();#}
+                {#},3000);#}
+                {#$('#save, .info').hide();#}
+
+                {#$.ajax({#}
+                    {#type: "post",#}
+                    {#url: "{{ path('comment_edit', { 'idCommExp': c.idCommExp }) }}",#}
+                    {#data : {comment : $('#editedcomm').val(), idCommExp: {{ c.idCommExp}} },#}
+                    {#success: function (data) {#}
+                        {#$('#editedcomm').val("")#}
+                    {#}#}
+                {#});#}
+
+                {#$('#edit').show();#}
+            {#});#}
+
+//            signalé commentaire
+
+            $('#report').click(function(){
+                $.ajax({
+                    type: "post",
+                    url: "{{ path('comment_report') }}",
+                    data : {comment : $('#MyComment').val(), id_exp: {{ c.idExp.idExperience}}, idCommExp: {{ c.idCommExp}} },
+                    success: function (data) {
+                        getComments();
+                    }
+                });
+            });
+
+function snitchFunction(current_id){
+    $.ajax({
+        type: "post",
+        url: "{{ path('comment_report') }}",
+        data : {comment : $("#"+current_id).val(), id_exp: c.idExp.idExperience, idCommExp: current_id, current_user: app.user.id },
+        success: function (data) {
+            getComments();
+        }
+    });
+}
+
+        </script>
+    {% endfor %}
+
+

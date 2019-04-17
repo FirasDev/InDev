@@ -1,0 +1,62 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<br><br><br><br><br>
+<div class="fos_user_user_show">
+    <div class="row" style="margin-left:0px; margin-right:0px;">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="user-profile">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="user-photo m-b-30">
+                                    <input type="file" hidden id="imgupload" name="imgupload">
+                                    <figure {% if user.id == app.user.id %} class="imghvr-flip-diag-1" {% endif %}>
+                                        {% if user.photoP is null %}
+                                            <img if="user-img" class="img-fluid" src="{{ asset('assetsBack/images/default_profile_picture.png') }}" alt="not found"/>
+                                        {% else %}
+                                                <img src="{{ asset("assets/images/users/"~ user.photoP ) }}" width="80px;" border="0" alt="No image found" class="pb-img">
+                                        {% endif %}
+                                        {% if user.id == app.user.id %}
+                                            <figcaption id="OpenImgUpload" style="margin: auto; cursor:pointer;">
+                                                <div><i style="font-size: 50px" class="fa fa-upload"></i></div>
+                                                <div style="font-size: small" class="text">Click to Upload a New Photo</div>
+                                            </figcaption>
+                                        {% endif %}
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="profile-navigation-bar">
+                                    <ul id="profile-navigation-bar-ul">
+                                        <li id="profile">Profile</li>
+                                        <li id="pictures">{% if user.id == app.user.id %}My {% endif %}Pictures</li>
+                                        {% if user.id == app.user.id %}
+                                            <li id="editprofile"><i id="editprofile" class="fa fa-pencil"></i></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div style="margin-top:50px" id="mainProfileContent">
+                                    <div class="user-work">
+                                        <div class="user-profile-name">{{ user.firstname ~' '~ user.lastname ~ ' (' ~ user.username ~ ')' }}</div>
+                                        <div class="user-Location"><i class="flag-icon flag-icon-Tunisia"></i> {{ user.nationalite }}</div>
+                                        <div class="user-job-title"><strong>Born : </strong> {{ user.dateNaissance|date('F d, Y') }}</div>
+                                    </div>
+                                    <div id="last-login">
+                                        <strong>Last Login : </strong>
+                                            {{ user.lastLogin|date('d/m/Y H:i:s') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+
+
+
+

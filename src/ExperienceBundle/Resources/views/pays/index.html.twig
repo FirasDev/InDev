@@ -1,0 +1,491 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+<title>Pays</title>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .top_panel_wrap{
+            background: url({{ asset("assets/wp-content/uploads/2015/05/menu_bg.jpg") }}) no-repeat center top #63cac5;
+            margin-top: 0px !important;
+            margin-bottom: 20px !important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+{#<div class="g2">#}
+        {#<div class="g2_space"></div>#}
+        {#<div id="game-box">#}
+            {#<div id="game"><div id="game_embed" data-type="iframe" data-iframe-src="https://www.silvergames.com/en/madalin-stunt-cars-2/iframe" data-src="aHR0cHM6Ly93d3cubWFkYWxpbmdhbWVzLmNvbS9tYWRhbGluZ2FtZXMvd3AtY29udGVudC91cGxvYWRzL2dhbWVzL3dlYmdsL00vTVNDMi1XRUJHTC9pbmRleC5odG1s" data-scrolling="no" data-fullscreen="ratio" data-preroll="1" data-prerolltype="novideo" style="background-image: none;"><iframe src="https://www.madalingames.com/madalingames/wp-content/uploads/games/webgl/M/MSC2-WEBGL/index.html" id="swf" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" marginwidth="0" marginheight="0" hspace="0" vspace="0" scrolling="no" width="100%" height="100%" frameborder="0"></iframe></div></div>#}
+            {#<div id="game-features">#}
+                {#<ul class="g-icons">#}
+                    {#<li id="vote-buttons" data-game-id="5728"></li>#}
+                    {#<li id="vote">Rate:</li>#}
+                    {#<li><div id="vote_yes" class="sprite" data-voted=""></div></li>#}
+                    {#<li><div id="vote_no" class="sprite" data-voted=""></div></li>#}
+                    {#<li class="rating"><span id="rating_value">82</span>%&nbsp;&nbsp;(<span id="rating_count">21336</span> Votes)</li>#}
+                    {#<li class="flex"></li>#}
+                    {#<li><a href="#walkthrough"><div id="ico_video" class="sprite"></div></a></li>#}
+                    {#<li id="ico_share" class="sprite"></li>#}
+                    {#<li id="share_buttons" style="background-image: url(&quot;https://i1.silvergames.com/i/share-buttons.png&quot;); display: list-item;"><div id="fb">&nbsp;</div><div id="twit">&nbsp;</div><div id="goo">&nbsp;</div></li>#}
+                    {#<li id="ico_zoom" class="sprite"></li>#}
+                {#</ul>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="g2_space"></div>#}
+    {#</div>#}
+
+    {#<h1>Pays list</h1>#}
+
+    {#<table>#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Iso</th>#}
+                {#<th>Name</th>#}
+                {#<th>Nicename</th>#}
+                {#<th>Iso3</th>#}
+                {#<th>Numcode</th>#}
+                {#<th>Phonecode</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for pay in pays %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('pays_show', { 'id': pay.id }) }}">{{ pay.id }}</a></td>#}
+                {#<td>{{ pay.iso }}</td>#}
+                {#<td>{{ pay.name }}</td>#}
+                {#<td>{{ pay.nicename }}</td>#}
+                {#<td>{{ pay.iso3 }}</td>#}
+                {#<td>{{ pay.numcode }}</td>#}
+                {#<td>{{ pay.phonecode }}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('pays_show', { 'id': pay.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('pays_edit', { 'id': pay.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('pays_new') }}">Create a new pay</a>#}
+        {#</li>#}
+    {#</ul>#}
+
+    <link rel='stylesheet' id='themerex-magnific-style-css'  href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='themerex-magnific-style-css'  href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css' type='text/css' media='all' />
+
+    <style>
+        #countcont{
+            width: 300px;
+            margin: auto;
+            text-align:center;
+        }
+        .mainWrapper {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url("{{ asset("images/bg2.jpg" ) }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        {#.image-blurred-edge {#}
+            {#background: url({{ asset('images/kelsey-knight-452154-unsplash.jpg') }}) left top no-repeat;#}
+            {#background-size: 750px;#}
+            {#width: 600px;#}
+            {#height: 400px;#}
+            {#box-shadow: 25px 25px 50px 0 white inset, -25px -25px 50px 0 white inset;#}
+        {#}#}
+    </style>
+    <div class="mainWrapper">
+<div class="container" style="clear:both;!important;margin-top: 180px;">
+    <div class="row">
+        <div class="col-md-12" style="position:relative;">
+
+            <p></p><br>
+            <p></p>
+
+
+            <img class="img-responsive" style="margin-left: auto;
+  margin-right: auto;" width="600px" height="400px" src="{{ asset('assets/images/blur_edges.png') }}" alt="" />
+
+
+<div class="m-4">
+    <div class="col-md-12" style="float: left">
+
+
+    <h1 class="text-center display-4">Veuillez sélectionner un pays</h1>
+
+        <br>
+        <br>
+        <div id="countcont">
+    <select class="form-control" id="countries">
+        {% for pay in pays %}
+        <option value="{{ pay.iso }}" data-capital="Kabul">{{ pay.name }}</option>
+        {% endfor %}
+    </select>
+        </div>
+    <hr>
+    </div>
+
+</div>
+        </div>
+        {#button svg#}
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400');
+
+        * {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            outline:none;
+        }
+
+        #button-wrapper {
+            font-family: 'Roboto', sans-serif;
+            font-size:21px;
+            text-transform:uppercase;
+            letter-spacing:6px;
+            color:white;
+            width:100%;
+            height: 100px;
+            position: absolute;
+            top: calc(50% - 70px);
+            left: 0;
+            padding:20px 0px;
+            overflow: visible;
+        }
+
+        .submit, .loader, .loader-wrapper{
+            position:absolute;
+            left:0;
+            right:0;
+            margin:0 auto;
+        }
+
+        .submit {
+            z-index:2;
+            width:325px;
+            height:95px;
+            background: linear-gradient(to right, #ffb369 0%,#ff4272 100%);
+            display:block;
+            border-radius:200px;
+            text-align:center;
+            color:rgba(255,255,255,1);
+            text-decoration:none;
+            line-height:440%;
+            transition: all 0.7s ease, line-height 0s ease, color 0.4s ease, filter 0.2s ease;
+        }
+
+        #button-wrapper::selection, .submit::selection {
+            background: transparent;
+        }
+
+        .submit:before {
+            content:"";
+            z-index:-2;
+            width:100%;
+            height:100%;
+            background: linear-gradient(to right, #ffb369 0%,#ff4272 100%);
+            display:block;
+            border-radius:200px;
+            position:absolute;
+            left:0;
+            top:0;
+            opacity:0.8;
+            transform:scale(0.9) translateY(15px);
+            filter:blur(20px);
+            transition:all 0.2s ease;
+        }
+
+        .submit:after {
+            content:"";
+            z-index:-4;
+            width:100%;
+            height:100%;
+            background: linear-gradient(to right, #ffb369 0%,#ff4272 100%);
+            display:block;
+            border-radius:200px;
+            position:absolute;
+            left:0;
+            top:0;
+            opacity:0;
+            transform:scale(1);
+        }
+
+        .submit:hover:before {
+            transform:scale(0.9) translateY(5px);
+            filter:blur(15px);
+        }
+
+        .submit:active {
+            line-height:460%;
+            filter:brightness(0.95);
+            transition:all 0s;
+        }
+
+        .checked .submit:before {
+            top:0px;
+            opacity:0;
+        }
+
+        .checked .submit:after {
+            animation: submit-after-anim 0.5s 4.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+        .checked {
+            -webkit-filter: url("#goo");
+            filter: url("#goo");
+        }
+
+        .yellow {
+            background-color: #ffb369;
+        }
+
+        .pink {
+            background-color: #ff4272;
+        }
+
+        .orange {
+            background-color: #ff7b6e;
+            transform:scale(0.2) rotate(30deg) translate(0px);
+        }
+
+        .checked .pink {
+            animation: loader-anim-pink 4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .checked .yellow  {
+            animation: loader-anim-yellow 4s 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .checked .orange {
+            animation: loader-anim-orange 4s 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .loader {
+            width:95px;
+            height:95px;
+            border-radius:50%;
+            opacity:0;
+            z-index:1;
+        }
+
+        .checked .loader {
+            opacity:1;
+        }
+
+        .checked .loader-wrapper {
+            animation: wrapper-loader-anim 4.2s linear;
+            width:95px;
+            height:95px;
+            transform:scale(0)
+        }
+
+        .checked .submit {
+            width:95px;
+            color:rgba(255,255,255,0);
+            background: linear-gradient(to right, #ff7b6e 0%,#ff7b6e 100%);
+            animation: submit-anim 4s  cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
+
+        .check-wrapper {
+            position:absolute;
+            left:0;
+            right:0;
+            margin:0 auto;
+            width:95px;
+            height:95px;
+            z-index:-1;
+            opacity:1;
+        }
+
+        .check-wrapper svg {
+            margin-top: 31px;
+            margin-left: 16px;
+        }
+
+        .check{fill:none;
+            stroke:#ffffff;
+            stroke-width:10;
+            stroke-linecap:round;
+            stroke-linejoin:round;
+            stroke-miterlimit:10;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            z-index:-1;
+        }
+
+        .checked .check-wrapper {
+            z-index:3;
+        }
+
+        .checked .check {
+            animation: check 4s 4.4s ease forwards;
+        }
+
+
+        @keyframes loader-anim-pink {
+            0% {transform:scale(0.2) rotate(0deg) translate(220px, 0px); }
+            100% {transform:scale(0.2) rotate(1100deg) translate(300px, 0px);}
+        }
+
+        @keyframes loader-anim-yellow {
+            0% {transform:scale(0.2) rotate(0deg) translate(300px, 0px); }
+            100% {transform:scale(0.2) rotate(1100deg) translate(220px, 0px);}
+        }
+
+        @keyframes loader-anim-orange {
+            0%,70% {transform:scale(0.2) rotate(30deg) translate(0px); }
+            85% {transform:scale(0.2) rotate(30deg) translate(-300px);}
+            100% {transform:scale(0.2) rotate(30deg) translate(0px); }
+        }
+
+        @keyframes wrapper-loader-anim {
+            0% {transform:scale(0) translateY(0px) }
+            10% {transform:scale(1) translateY(20px)}
+            50%, {transform:scale(1.2) translateY(10px) }
+            90% {transform:scale(1) translateY(-10px)}
+            100% {transform:scale(0) translateY(0px)}
+        }
+
+        @keyframes submit-after-anim {
+            0% {transform:scale(1); opacity:0.3 }
+            100% {transform:scale(2); opacity:0 }
+        }
+
+        @keyframes submit-anim {
+            0% {transform:scale(1) }
+            5%, 95% {transform:scale(0.7) }
+            100% {transform:scale(1)}
+        }
+
+        @keyframes check {
+            from {
+                stroke-dashoffset: 1000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+        <div class="col-md-12" style="position:relative;">
+            <p></p>
+        </div>
+        <div class="col-md-12" style="position:relative;">
+            <p></p>
+        </div>
+        <div class="col-md-12" style="position:relative;">
+            <p></p>
+        </div>
+        <div class="col-md-12" style="position:relative;">
+            <p></p>
+        </div>
+        <div class="col-md-12" style="position:relative;">
+            <p></p>
+        </div>
+
+            <div class="col-md-12" style="position:relative;">
+    <div id="button-wrapper">
+        <a id="send" class="submit" href="#">Submit</a>
+        <div class="loader-wrapper">
+            <span class="loader yellow"></span>
+            <span class="loader pink"></span>
+        </div>
+        <span class="loader orange"></span>
+
+        <div class="check-wrapper">
+            <svg version="1.1"width="65px" height="38px" viewBox="0 0 64.5 37.4">
+                <polyline class="check" points="5,13 21.8,32.4 59.5,5 "/>
+            </svg>
+        </div>
+
+    </div>
+            </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">  <defs>    <filter id="goo">      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />      <feBlend in="SourceGraphic" in2="goo" />    </filter>  </defs></svg>
+
+
+</div>
+</div>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js'></script>
+
+    <script>
+        function format(item, state) {
+            if (!item.id) {
+                return item.text;
+            }
+            var countryUrl = "https://lipis.github.io/flag-icon-css/flags/4x3/";
+            var stateUrl = "https://oxguy3.github.io/flags/svg/us/";
+            var url = state ? stateUrl : countryUrl;
+            var img = $("<img>", {
+                class: "img-flag",
+                width: 26,
+                src: url + item.element.value.toLowerCase() + ".svg"
+            });
+            var span = $("<span>", {
+                text: " " + item.text
+            });
+            span.prepend(img);
+            return span;
+        }
+
+        $(document).ready(function() {
+            $("#countries").select2({
+                templateResult: function(item) {
+                    return format(item, false);
+                }
+            });
+            $("#us-states").select2({
+                templateResult: function(item) {
+                    return format(item, true);
+                }
+            });
+        });
+
+
+        var	wrapper = $( "#button-wrapper" );
+
+        $( ".submit" ).click(function() {
+            if(wrapper.not( ".checked" )) {
+                wrapper.addClass( "checked" );
+                setTimeout(function(){
+                    wrapper.removeClass( "checked" );
+                }, 8000);
+            }
+        });
+
+        $('#send').on('click', function (event) {
+            event.preventDefault();
+            var selpays = $('#countries').find(":selected").text();
+            console.log(selpays);
+            setTimeout(function(){
+                $.ajax({
+                    type: "post",
+                    url: "{{ path('pays_list') }}",
+                    data : { namepays: selpays },
+                    success: function (data) {
+                        location.href = 'meteo/'+selpays;
+                    }
+                });
+
+            }, 3000);
+
+        });
+
+    </script>
+
+    </div>
+{% endblock %}

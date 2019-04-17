@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+
+    {% block body %}
+{%  for message in app.flashes('success') %}
+    <div class="alert alert-success"></div>
+     {{ message }}
+    {% endfor %}
+        {% for t in groups %}
+        <center>
+            <h1>{{ t.title }} </h1>
+        <h3> Destination:</h3>     <h3>  {{ t.destination }}  </h3>
+            <h3> Date départ {{ t.dateDebut|date }}</h3>
+            <h3> Date reteur {{ t.dateFin|date }}</h3>
+            <h3>Plan: {{ t.plan }} </h3>
+
+            {% if ok == 'false' %}
+                <button><a href="{{path('travelbuddy_JoinGroup',{'id':t.idTravelGroup})}}">Joindre Group</a></button>
+               {% endif %}
+
+            <button><a href="{{path('travelbuddy_LeaveGroup',{'id':t.idTravelGroup})}}">Quiter groupe</a></button>
+
+            <button><a href="{{path('travelbuddy_GroupsList')}}">reteur</a></button>
+
+             <button><a href="{{path('travelbuddy_EspaceGroup',{'id':t.idTravelGroup})}}">Espace groupe</a></button>
+
+                {% endfor %}
+        </center>
+
+        <h3>Groupe membres</h3>
+        <div align="right"></div>
+        {% for m in members %}
+        <h4>  {{ m.idUser.firstname }}</h4>
+         <h4>  {{ m.idUser.nationalite }} </h4>
+          {% endfor %}
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}

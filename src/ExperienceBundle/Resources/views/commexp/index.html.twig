@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Commexps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcommexp</th>
+                <th>Comment</th>
+                <th>Idexp</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commExp in commExps %}
+            <tr>
+                <td><a href="{{ path('commexp_show', { 'idCommExp': commExp.idCommExp }) }}">{{ commExp.idCommExp }}</a></td>
+                <td>{{ commExp.comment }}</td>
+                <td>{{ commExp.idExp }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('commexp_show', { 'idCommExp': commExp.idCommExp }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('commexp_edit', { 'idCommExp': commExp.idCommExp }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commexp_new') }}">Create a new commExp</a>
+        </li>
+    </ul>
+{% endblock %}

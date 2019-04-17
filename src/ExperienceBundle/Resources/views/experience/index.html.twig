@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .top_panel_wrap{
+            background: url({{ asset("assets/wp-content/uploads/2015/05/menu_bg.jpg") }}) no-repeat center top #63cac5;
+            margin-top: 0px !important;
+            margin-bottom: 20px !important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    {% stylesheets filter="scssphp" output="css/app.css"
+    "assets/css/items_grid.css"
+    "assets/css/weather.css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+<div style="clear:both;!important;margin-top: 200px;">
+    <h2 style="margin-top: 200px;" align="center">Experiences list</h2>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <h3 style="margin-top: 50px;" align="center">Vous pouvez filtrer les expériences Selon les saisons. <a href="{{ path('experience_list') }}" style="text-decoration: none;">
+            <span style="color:steelblue"> Réinitialiser</span>
+                <span class="fa fa-undo"></span></a></h3>
+
+    <div class="container" style="margin-top: -130px;">
+        <a class="mylink img-responsive" href="{{ path('experience_season', { 'Season':  "Eté" }) }}"><div class="sunny"></div></a>
+        <a class="mylink img-responsive" href="{{ path('experience_season', { 'Season':  "Automne" }) }}"><div class="rainy"></div></a>
+        <a class="mylink img-responsive" href="{{ path('experience_season', { 'Season':  "Printemps" }) }}"><div class="rainbow"></div></a>
+        <a class="mylink img-responsive" href="{{ path('experience_season', { 'Season':  "Hiver" }) }}"><div class="stormy" ></div></a>
+
+    </div>
+    <br><br>
+
+                <div class="content_wrap" style="width: 90%">
+                    <div class="content" style="width: 100%">
+
+                        <article class="itemscope post_item post_item_single post_featured_default post_format_standard post-1654 page type-page status-publish hentry" itemscope itemtype="http://schema.org/Article">
+                            <section class="post_content" itemprop="articleBody">
+                                <div class="sc_section" style="margin-bottom:50px !important;background-color:#f5f7f7;">
+                                    <div class="sc_section" style="margin-top:50px !important;margin-bottom:50px !important;">
+                                        <div class="sc_content content_wrap" data-animation="animated fadeInUp normal">
+                                            <div class="woocommerce columns-3 ">
+                                                <ul class="products columns-3"  id="poster">
+                                                    <style>
+                                                        .first{
+                                                            position:relative;
+                                                        }
+                                                        .wrapper-showcase div.first img {
+                                                            width: 100%;
+                                                            height: 100%;
+                                                            z-index: -100;
+                                                        }
+
+                                                        .wrapper-showcase div.first span {
+                                                            width: 100%;
+                                                            height: 100%;
+                                                            display: inline-block;
+                                                            left: 0;
+                                                            z-index: 100;
+                                                            position:absolute;
+                                                            top:0;
+                                                        }
+                                                        .fa-heart-o {
+                                                            color: red;
+                                                            cursor: pointer;
+                                                        }
+                                                        .fa-heart {
+                                                            color: red;
+                                                            cursor: pointer;
+                                                        }
+                                                        #ballz{
+                                                            max-width: 90px;
+                                                            max-height: 90px;
+                                                            min-height: 90px;
+                                                            min-width: 90px;
+                                                        }
+                                                        img {
+                                                            max-width: 300px;
+                                                            max-height: 300px;
+                                                            min-height: 300px;
+                                                            min-width: 300px;
+                                                        }
+                                                    </style>
+                                                    {% set nb = 0 %}
+                                                    {% for experience in pagination  %}
+                                                        {% set nb = nb+1 %}
+                                                        <li class="post-753 product type-product status-publish has-post-thumbnail product_cat-new-york-city-the-usa product_tag-city product_tag-town product_tag-urban instock shipping-taxable purchasable product-type-simple">
+                                                            <div class="wrapper-showcase">
+                                                               <div class="first">
+                                                                   <div class="item">
+                                                                   <img  width="564" height="370" id="myImg" src="{{ asset("assets/images/experience/"~ experience.image ) }}" class="resize attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" srcset="{{ asset("assets/images/experience/"~ experience.image ) }} 564w, {{ asset("assets/images/experience/"~ experience.image ) }} 250w, {{ asset("assets/images/experience/"~ experience.image ) }} 500w" sizes="(max-width: 564px) 100vw, 564px" />
+                                                                   </div>
+                                                            {% if app.user %}
+                                                                   {% if followed is null %}
+                                                                       <span id="{{ experience.idExperience }}" onclick = "heartFunction(this.id);"  class="overlay" >
+                                                                            <i class="fa fa-heart-o" aria-hidden="true" style="padding:5px;"></i>
+                                                                           </span>
+                                                                   {% else %}
+
+                                                                    {% for f in followed %}
+                                                                        {% if f.idExperience == experience.idExperience %}
+                                                                   <span id="{{ experience.idExperience }}" onclick = "heartFunction(this.id);"  class="overlay" >
+                                                                            <i class="fa fa-heart" aria-hidden="true" style="padding:5px;"></i>
+                                                                       </span>
+                                                                        {% else %}
+                                                                       <span id="{{ experience.idExperience }}" onclick = "heartFunction(this.id);"  class="overlay" >
+                                                                            <i class="fa fa-heart-o" aria-hidden="true" style="padding:5px;"></i>
+                                                                           </span>
+                                                                            {% endif %}
+                                                                    {% endfor %}
+                                                                   {% endif %}
+                                                            {% else %}
+                                                            {% endif %}
+                                                               </div>
+                                                            </div>
+                                                            <a href="{{ path('experience_show',{'idExperience': experience.idExperience }) }}" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                <h2 class="woocommerce-loop-product__title text-center">{{ experience.TitreExp }}</h2>
+
+                                                            </a></li>
+                                                    {% endfor %}
+
+                                                </ul>
+                                            </div></div></div>
+                                    <div class="sc_section aligncenter" data-animation="animated fadeIn normal" style="background-color:#f5f7f7;">
+                                        <div class="sc_section_overlay" style=""><div class="sc_section_content">
+                                                <div class="sc_content content_wrap" style="margin-top:2.5em !important;margin-bottom:2.5em !important;">
+                                                    <div class="sc_section aligncenter" style="width:70%;">
+                                                        <h2 class="sc_title sc_title_regular" style="margin-top:0px;">Consultez nos expériences populaires</h2>
+                                                        <h5 class="sc_title sc_title_regular" style="margin-top:5px;margin-left:2px;color:#bac0c3;font-weight:600;">Ce sont les expériences les plus suivies par nos utilisateurs</h5>
+                                                    </div><div id="sc_section_1983085873" class="sc_section" style="margin-top:1.5em !important;margin-bottom:0px !important;height:140px;">
+                                                        <div id="sc_section_1983085873_scroll" class="sc_scroll sc_scroll_horizontal swiper-slider-container scroll-container" style="height:140px;">
+                                                            <div class="sc_scroll_wrapper swiper-wrapper">
+                                                                <div class="sc_scroll_slide swiper-slide">
+                                                                    {% for experience in pagination  %}
+                                                                    <div class="sc_image_wrap  alignleft" style="margin-right:0px !important;">
+
+                                                                        <figure class="sc_image  sc_image_shape_round" style="width:90px;height:90px;">
+                                                                            <a href="{{ path('experience_show',{'idExperience': experience.idExperience }) }}">
+                                                                            </a>
+                                                                            <img id="ballz" src="{{ asset("assets/images/experience/"~ experience.image ) }}" alt="" />
+                                                                        </figure>
+                                                                        <figcaption>
+                                                                            <span>
+                                                                            </span>
+                                                                            <a href="#">{{ experience.idPays }}</a>
+                                                                        </figcaption>
+
+                                                                    </div>
+                                                                        &nbsp;&nbsp;
+                                                                    {% endfor %}
+                                                                </div>
+                                                                    </div>
+                                                            <div id="sc_section_1983085873_scroll_bar" class="sc_scroll_bar sc_scroll_bar_horizontal sc_section_1983085873_scroll_bar">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div></div></div></div>
+
+                                </div> <!-- </div> class="content"> -->
+                            </section>
+                        </article>
+                    </div>
+                </div>
+
+        <br><br>
+        <div class="navigation row justify-content-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% javascripts filter="?jsqueeze" output="js/app.js"
+    "assets/js/items_grid.js"
+    %}
+    <script src="{{ asset_url }}"></script>
+    <script>
+            function heartFunction(current_id){
+            if($("#"+current_id).hasClass("liked")){
+                $("#"+current_id).html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+                $("#"+current_id).removeClass("liked");
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('experience_unfollow') }}",
+                    data : {id_exp: current_id },
+                    success: function (data) {
+                        location.reload(true);
+
+
+                    }
+                });
+            }else{
+                $("#"+current_id).html('<i class="fa fa-heart" aria-hidden="true"></i>');
+                $("#"+current_id).addClass("liked");
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('experience_follow') }}",
+                    data : {id_exp: current_id },
+                    success: function (data) {
+                        location.reload(true);
+                    }
+                });
+
+            }
+        }
+    </script>
+    {% endjavascripts %}
+</div>
+{% endblock %}

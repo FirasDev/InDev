@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <!--<div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>-->
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <br>
+    <div class="row" style="margin-left:0px; margin-right:0px;">
+        <div class="col-md-12">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {% if app.user %}
+        <script language="JavaScript">
+            $('#profile-navigation-bar-ul li').click(function (e) {
+                var user_id = {% if app.request.attributes.get('_route') == 'show_user_profile' %}
+                        {{ app.request.get('user_id') }}
+                        {% else %}
+                        {{ app.user.id }}
+                        {% endif %};
+                var action = e.target.id;
+                $.ajax({
+                    url: "{{ path('get_profile_main_content') }}",
+                    type: "post",
+                    data: "user_id=" + user_id + "&action=" + action,
+                    success: function (data) {
+                        if (data.success === true) {
+                            $('#mainProfileContent').html(data.html);
+                            $('.js-datepicker').datepicker({
+                                'position': 'up'
+                            });
+                        }
+                    }
+                });
+            });
+            $('#OpenImgUpload').click(function () {
+                $('#imgupload').trigger('click');
+            });
+            $('#imgupload').on('change', function (e) {
+                var data = new FormData();
+                $.each($('#imgupload')[0].files, function (i, file) {
+                    data.append('file-' + i, file);
+                });
+                $.ajax({
+                    url: "{{ path('change_user_photo') }}",
+                    type: "post",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (data) {
+                        if (data.success === true) {
+                            $('#user-img').attr('src', data.url);
+                        }
+                    }
+                });
+            });
+
+            function performProfileEdit(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $.ajax({
+                    type: "post",
+                    url: $('#profile_edit_form').attr('action'),
+                    data: $('#profile_edit_form').serialize(),
+                    success: function (data) {
+                        if (data.success === false) {
+                            for (var key in data.errors) {
+                                $($('#profile_edit_form').find('[name*="' + key + '"]')[0]).before('<ul class="errors"><li>' + data.errors[key] + '</li></ul>');
+                            }
+                        }
+                        else {
+                            $('#mainProfileContent').html(data.html);
+                        }
+                    }
+                });
+            }
+        </script>
+    {% endif %}
+{% endblock %}

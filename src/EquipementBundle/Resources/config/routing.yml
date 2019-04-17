@@ -1,0 +1,52 @@
+index:
+  path:     /
+  defaults: { _controller: EquipementBundle:Equipement:index}
+
+shop:
+  path:     /shop
+  defaults: { _controller: EquipementBundle:Equipement:shop}
+
+equipement_show:
+  path:     /equipement/{idEq}
+  defaults: { _controller: EquipementBundle:Equipement:pageEquipement}
+
+
+mes-equipements:
+  path:     /mes-equipements
+  defaults: { _controller: EquipementBundle:Equipement:mesEquipements}
+
+mes-echanges:
+  path:     /echanges
+  defaults: { _controller: EquipementBundle:Equipement:echange}
+
+equipement_delete:
+  path:     /supprimer-equipement/{idEq}
+  defaults: { _controller: EquipementBundle:Equipement:supprimerEquipement}
+
+equipement:
+  path:     /equipement
+  defaults: { _controller: EquipementBundle:Equipement:equipement}
+
+commentaire_delete:
+  path:     /supprimer-commentaire/{idCommentaire}
+  defaults: { _controller: EquipementBundle:Equipement:supprimerCommentaire}
+
+commentaire_edit:
+  path:     /modifier-commentaire
+  defaults: { _controller: EquipementBundle:Equipement:modifierCommentaire}
+
+panier:
+  path:     /panier
+  defaults: { _controller: EquipementBundle:Equipement:panier}
+
+
+facture:
+  path:     /facture
+  defaults: { _controller: EquipementBundle:Equipement:facture}
+
+rating:
+  path:     /rating
+  defaults: { _controller: EquipementBundle:Equipement:rating}
+
+
+

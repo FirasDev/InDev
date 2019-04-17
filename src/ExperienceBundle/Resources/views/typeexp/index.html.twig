@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Typeexps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idtype</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeExp in typeExps %}
+            <tr>
+                <td><a href="{{ path('typeexp_show', { 'idType': typeExp.idType }) }}">{{ typeExp.idType }}</a></td>
+                <td>{{ typeExp.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('typeexp_show', { 'idType': typeExp.idType }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('typeexp_edit', { 'idType': typeExp.idType }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('typeexp_new') }}">Create a new typeExp</a>
+        </li>
+    </ul>
+{% endblock %}
