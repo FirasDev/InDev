@@ -33,6 +33,8 @@ class AppKernel extends Kernel
             new Skies\QRcodeBundle\SkiesQRcodeBundle(),
             new FOS\MessageBundle\FOSMessageBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new MobileBundle\MobileBundle(),
 
         ];
 

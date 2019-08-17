@@ -199,22 +199,10 @@ class EquipementController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $commentaires = $em->getRepository('AppBundle:Commentaire')->findBy(['equipement'=>$equipement->getIdEq()]);
 
 
-        $commentaire = new Commentaire();
-        $form = $this->createForm('AppBundle\Form\CommentaireType', $commentaire);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
 
-            $user = $this->container->get('security.token_storage')->getToken()->getUser();
-            $commentaire->setIdUser($user);
-            $commentaire->setEquipement($equipement);
-            $em->persist($commentaire);
-            $em->flush();
-            return $this->redirectToRoute('equipement_show', array('idEq' => $equipement->getIdeq()));
-        }
 
 
         $editForm = $this->createForm('AppBundle\Form\EquipementType', $equipement);
@@ -241,8 +229,6 @@ class EquipementController extends Controller
 
         return $this->render('EquipementBundle:Default:index2.html.twig', array(
             'equipement' => $equipement,
-            'commentaires'=>$commentaires,
-            'form'=>$form->createView(),
             'form_edit'=>$editForm->createView(),
             'rating'=>$ratingForm->createView(),
         ));
@@ -273,30 +259,6 @@ class EquipementController extends Controller
 
 
 
-    public function supprimerCommentaireAction(Commentaire $commentaire)
-    {
-        $eq = $commentaire->getEquipement()->getIdEq();
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($commentaire);
-        $em->flush();
-
-
-        return $this->redirectToRoute('equipement_show',['idEq'=>$eq]);
-    }
-
-
-    public function modifierCommentaireAction()
-    {
-        dump($_POST);
-        dump($_GET);
-        $em = $this->getDoctrine()->getManager();
-        $commentaire = $em->getRepository(Commentaire::class)->find($_GET['id']);
-        $commentaire->setTexteCommentaire($_POST['comment']);
-        $em->flush();
-        $eq = $commentaire->getEquipement()->getIdEq();
-        return $this->redirectToRoute('equipement_show',['idEq'=>$eq]);
-
-    }
 
 
 

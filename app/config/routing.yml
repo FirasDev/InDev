@@ -27,6 +27,9 @@ local_experience:
     resource: "@ExperienceBundle/Resources/config/routing.yml"
     prefix:   /experience
 
+mobile:
+    resource: "@MobileBundle/Resources/config/routing.yml"
+    prefix:   /mobile
 
 app:
     resource: "@AppBundle/Controller/"

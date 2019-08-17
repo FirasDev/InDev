@@ -3,12 +3,19 @@
 namespace TravelbuddyBundle\Controller;
 
 
+use Proxies\__CG__\AppBundle\Entity\TravelBuddy;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\TravelGroup ;
 use AppBundle\Entity ;
 use Symfony\Component\HttpFoundation\Request;
 use TravelbuddyBundle\Form\TravelGroupType;
 use AppBundle\Repository ;
+use Symfony\Component\HttpFoundation\JsonResponse ;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer ;
+use Symfony\Component\Serializer\Serializer ;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 class GroupsController extends Controller {
 
@@ -403,5 +410,132 @@ class GroupsController extends Controller {
 
     }
 
+
+    public function deleteAdminAction($id) {
+        //entity manager
+        $em=$this->getDoctrine()->getManager() ;
+        //recu de l'objet avec $id
+        $group=$this->getDoctrine()
+            ->getRepository(TravelGroup::class)
+            ->find($id);
+        //delete object from ORM
+        $em->remove($group);
+        //delete from the data base
+        $em->flush();
+
+        return $this->redirectToRoute('travelbuddy_AdminGroup') ;
+    }
+
+
+    public function amitoAction() {
+
+        return $this->render('@Travelbuddy/Amito/Amito.html.twig' ) ;
+
+
+    }
+
+
+    public function jsonlistAction()
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $groups = $this->getDoctrine()->getManager()
+            ->getRepository(TravelGroup::class)->JsonTest();
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonEncoder = $serializer->normalize($groups);
+        return new JsonResponse($jsonEncoder);
+
+    }
+
+
+
+
+    public function rechercheJsonAction($destination)
+    {
+        //créer une instance de notre entity  manager
+        $groups = $this->getDoctrine()->getManager()
+            ->getRepository(TravelGroup::class)->getGroupByDestinationJson($destination);
+        $serializer = new Serializer([new ObjectNormalizer()]) ;
+        dump($groups);
+        $formatted = $serializer->normalize($groups);
+
+
+        return new JsonResponse($formatted) ;
+    }
+
+
+    public function deleteGroupJson(Request $request){
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+        $group=$em->getRepository(TravelGroup::class)->find($id);
+        $em->remove($group);
+        $em->flush();
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function($object){
+            return $object->getId();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($group);
+        return new JsonResponse($formatted);
+    }
+
+
+
+    public function detailGroupjSONAction(Request $request)
+    {
+        $id=$request->get("id");
+        $em=$this->getDoctrine()->getManager();
+        $group=$em->getRepository(TravelGroup::class)->find($id);
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function($object){
+            return $object->getId();
+        });
+        $serializer = new Serializer([$normalizer], [$encoder]);
+        $formatted = $serializer->normalize($group);
+        return new JsonResponse($formatted);
+    }
+
+
+    public function jsonAddAction(Request $request)
+    {
+        $group = new TravelGroup();
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(Entity\User::class)->find(16);
+        $group->setIdOwner($user);
+        $group->setTitle($request->get('title'));
+        $group->setDestination($request->get('destination'));
+        $group->setPlan($request->get('plan'));
+        $group->setDateDebut(new \DateTime('now'));
+        $group->setImage('yop.png');
+        $em->persist($group);
+        $em->flush();
+        return new JsonResponse();
+
+    }
+
+
+    public function ImagesAction(Request $request)
+    {
+        $publicResourcesFolderPath = $this->get('kernel')->getRootDir() . '/../web/assets/images/Buddy/';
+        $image = $request->query->get("img");
+        // This should return the file located in /mySymfonyProject/web/public-resources/TextFile.txt
+        // to being viewed in the Browser
+        return new BinaryFileResponse($publicResourcesFolderPath.$image);
+    }
+
+
+    public function deleteMobileAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $id = $request->get("idT");
+        $group = $em->getRepository(TravelGroup::class)->find($id);
+        $em->remove($group);
+        $em->flush();
+        return new JsonResponse();
+    }
 
 }

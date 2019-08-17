@@ -37,7 +37,7 @@
                         <h1>Travel Buddy Section</h1>
                         <h3>Voyager plus tout seul</h3>
                     </hgroup>
-                    <button class="btn btn-hero btn-lg" role="button" href="{{path('travelbuddy_AjoutTravelBuddy')}}">>Deviens un TravelBuddy </button>
+                  <button class="btn btn-hero btn-lg" role="button" >>Deviens un TravelBuddy </button>
                 </div>
             </div>
             <div class="item slides">
@@ -57,7 +57,7 @@
                         <h1>Deviens un travel Buddy !</h1>
                         <h3>On doit voyayger ensemble</h3>
                     </hgroup>
-                    <button class="btn btn-hero btn-lg" role="button"href="{{path('travelbuddy_AjoutTravelBuddy')}}">Deviens un TravelBuddy</button>
+                    <button class="btn btn-hero btn-lg" role="button">Deviens un TravelBuddy</button>
                 </div>
             </div>
         </div>
@@ -77,6 +77,20 @@
                     <div class="column-1_3 sc_column_item sc_column_item_3 odd" style="text-align:center;"><figure class="sc_image  sc_image_shape_square"><img src="/wordfriendship/web/assets/wp-content/uploads/2015/04/testimonials_2.png" alt=""></figure><h5 class="sc_title sc_title_regular sc_align_center" style="margin-top:10px;margin-bottom:5px;text-align:center;font-weight:600;"><a href="../gallery/index.html">BOOK YOUR TRIP</a></h5>
                         <div class="sc_section" style="margin-right:1.5em !important;margin-left:1.5em !important;">Finally, our in-house specialists will seamlessly help you book the hotels or activities on your itinerary at the best available rates.</div></div></div></div></div></div>
 
+
+
+    {% for t in groups %}
+    <div class="sc_section" style="margin-top:3.5em !important;margin-bottom:0px !important;"><div class="sc_content content_wrap"><h2 class="sc_title sc_title_iconed sc_align_center" style="margin-top:0px;margin-bottom:8px;text-align:center;"><span class="sc_title_icon sc_title_icon_top  sc_title_icon_small"><img src="../wp-content/uploads/2015/04/top_title_bg.png" alt=""></span>Suggsttion</h2><h5 class="sc_title sc_title_regular sc_align_center" style="margin-top:0px;margin-bottom:50px;text-align:center;color:#bac0c3;font-weight:600;">SOUTH AFRICA, MARYLAND, ITALY &amp; MORE</h5><div class="woocommerce columns-3 "><ul class="products columns-3">
+                    <li class="post-754 product type-product status-publish has-post-thumbnail product_cat-yangon-myanmar product_tag-tour product_tag-travel product_tag-vacation first instock shipping-taxable purchasable product-type-simple">
+                        <a href="../product/myanmar-singapore-tour/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img width="564" height="370" src="{{ asset("assets/images/Buddy/"~ t.image ) }}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""  sizes="(max-width: 564px) 100vw, 564px"><h2 class="woocommerce-loop-product__title">{{ t.title }}</h2>				</a><div class="product_cats"><a href="../product/myanmar-singapore-tour/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                , </a><a href="../product-category/yangon-myanmar/index.html">Destinationn {{ t.destination }}</a>				</div>
+                        <div class="product_price">
+
+                           </div></li>
+
+                </ul>
+            </div></div></div>
+                     {% endfor %}
 
 
     <style>

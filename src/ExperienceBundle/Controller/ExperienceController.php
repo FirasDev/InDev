@@ -2,6 +2,12 @@
 
 namespace ExperienceBundle\Controller;
 
+use Symfony\Component\ExpressionLanguage\Tests\Node\Obj;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Validator\Constraints\DateTime;
 use AppBundle\Entity\CommExp;
 use AppBundle\Entity\FollowedExp;
 use AppBundle\Entity\Notification;
@@ -323,6 +329,86 @@ class ExperienceController extends Controller
             }
 
         }
+    }
+
+    public function allExperiencesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $experience = $em ->getRepository('AppBundle:Experience')->findAll() ;
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experience);
+        return new JsonResponse($formatted);
+    }
+
+    public function detailExperiencesAction($id)
+    {
+        $tasks = $this->getDoctrine()->getManager()
+            ->getRepository('AppBundle:Experience')
+            ->find($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+    public function addExperiencesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $experience = new Experience();
+        $experience->setTitreExp($request->get('titre'));
+        $experience->setDescExp($request->get('desc'));
+        $expdate = $request->get('date');
+        $newdate = new \DateTime($expdate);
+        $experience->setDateExp($newdate);
+        $experience->setSeason($request->get('season'));
+        $user = $this->getUser();
+        $experience->setIdUser($user);
+        $idpays = $request->get('pays');
+        $pays = $em->getRepository('AppBundle:Pays')->find($idpays);
+        $experience->setIdPays($pays);
+        $idtype = $request->get('type');
+        $type = $em->getRepository('AppBundle:TypeExp')->find($idtype);
+        $experience->setTypeExp($type);
+        $experience->setImage($request->get('url'));
+        $experience->setEvalExp($request->get('eval'));
+        $em->persist($experience);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experience);
+        return new JsonResponse($formatted);
+    }
+
+    public function deleteExperiencesAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $idexp = $request->get('id');
+        $experience = $em->getRepository('AppBundle:Experience')->find($idexp);
+        $em->remove($experience);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experience);
+        return new JsonResponse($formatted);
+    }
+
+    public function commentsMobileAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $idexp = $request->get('id');
+        $experience = $em->getRepository('AppBundle:Experience')->find($idexp);
+        $commExps = $em->getRepository('AppBundle:CommExp')->findBy(array('idExp' => $experience->getIdExperience()));
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commExps);
+        return new JsonResponse($formatted);
+    }
+
+    public function deletecommentsMobileAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commExps = $em->getRepository('AppBundle:CommExp')->findOneBy(array('idCommExp' => $request->get('id')));
+        $em->remove($commExps);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commExps);
+        return new JsonResponse($formatted);
     }
 
     /**

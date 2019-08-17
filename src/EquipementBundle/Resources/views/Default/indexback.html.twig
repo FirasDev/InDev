@@ -1,0 +1,40 @@
+{% extends 'baseback.html.twig' %}
+
+{% block body %}
+<center><table class="responstable" style="width: 80%">
+
+        <tr>
+            <th>Image</th>
+            <th>reference</th>
+            <th>libelle</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Quantite</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Categorie</th>
+            <th>User</th>
+
+        </tr>
+
+        {% for e in equipements %}
+            <tr>
+                <td><img src="{{ asset('img/') }}{{ e.image }}" alt=""  style="max-width: 80%;max-height: 80%"></td>
+                <td>{{ e.reference}}</td>
+                <td>{{ e.libelle}}</td>
+                <td>{{ e.description}}</td>
+                <td>{{ e.prix}}</td>
+                <td>{{ e.quantite}}</td>
+                <td>{{ e.type}}</td>
+                <td>{{ e.datePost|date}}</td>
+                <td>{{ e.categorie}}</td>
+                <td>{{ e.type}}</td>
+
+
+
+            </tr>
+        {% endfor %}
+
+    </table>
+</center>
+{% endblock %}

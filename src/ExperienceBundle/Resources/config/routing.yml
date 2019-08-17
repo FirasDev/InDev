@@ -52,7 +52,7 @@ my_meteo:
     defaults: { _controller: "ExperienceBundle:Pays:index" }
 
 comment_delete:
-    path:     /deletecom/{commExp}
+    path:     /deletecom/{idCommExp}
     defaults: { _controller: "ExperienceBundle:CommExp:delcomm" }
 
 comment_edit:
@@ -100,3 +100,31 @@ pays_meteo_stat:
 experience_delete:
     path:     /delete/{idExperience}
     defaults: { _controller: "ExperienceBundle:Experience:deleting" }
+
+experience_json:
+    path:     /exps
+    defaults: { _controller: "ExperienceBundle:Experience:allExperiences" }
+
+experience_add_json:
+    path:     /exps/add
+    defaults: { _controller: "ExperienceBundle:Experience:addExperiences" }
+
+experience_delete_json:
+    path:     /exps/delete
+    defaults: { _controller: "ExperienceBundle:Experience:deleteExperiences" }
+
+experience_edit_json:
+    path:     /exps/edit
+    defaults: { _controller: "ExperienceBundle:Experience:editExperiences" }
+
+experience_detail_json:
+    path:     /exps/{id}
+    defaults: { _controller: "ExperienceBundle:Experience:detailExperiences" }
+
+experience_comment_json:
+    path:     /exps/com/{id}
+    defaults: { _controller: "ExperienceBundle:Experience:commentsMobile" }
+
+experience_delete_comment_json:
+    path:     /exps/com/delete/{id}
+    defaults: { _controller: "ExperienceBundle:Experience:deletecommentsMobile" }

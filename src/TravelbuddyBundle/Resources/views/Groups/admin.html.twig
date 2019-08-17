@@ -7,7 +7,7 @@
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cherchez travel buddy..">
     <center>
 
-        <button href="{{path('travelbuddy_Stats',{'id':t.idTravelBuddy})}}">Voir Stats</button>
+      <a href="{{path('travelbuddy_Stats')}}" > <button >Voir Stats</button></a>
 
         <table id="myTable" class="table  width=50% align="center">
 
@@ -30,7 +30,7 @@
                 <td> {{ t.dateDebut|date  ('Y-m-d') }}    </td>
                 <td> {{ t.plan  }}    </td>
                 <td><button class="btn btn-primary"><a href="{{path('travelbuddy_UpdateGroupAdmin',{'id':t.idTravelGroup})}}">Modifier</a></button></td>
-
+                <td><button class="btn btn-primary"><a href="{{path('travelbuddy_DeleteGroupAdmin',{'id':t.idTravelGroup})}}">Supprimer</a></button></td>
                 </tr>
             {% endfor %}
         </table>

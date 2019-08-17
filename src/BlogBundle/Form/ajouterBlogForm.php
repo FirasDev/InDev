@@ -17,7 +17,7 @@ class ajouterBlogForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titreBlog',null,array('attr' => array('class' => 'ckeditor')))
+            ->add('titreBlog')
             ->add('articleBlog',CKEditorType::class)
             ->add('afficheFile', VichImageType::class,['label'=> false,'required'=>false])
            // ->add('dateAjoutBlog')

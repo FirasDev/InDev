@@ -308,11 +308,11 @@ class LogementController extends Controller
         $token = $this->container->get('security.token_storage')->getToken()->getUser();
         $mailer= $this->get('mailer');
 ///////// nexmo sms
-        $basic  = new \Nexmo\Client\Credentials\Basic('74cf9174', '03qvU6mGnFXmIuQB');
+        $basic  = new \Nexmo\Client\Credentials\Basic('2984de11', 'S0Oi9iK03G05wmSD');
         $client = new \Nexmo\Client($basic);
 
         $message = $client->message()->send([
-            'to' => '21653411569',
+            'to' => '21699244073',
             'from' => 'AMITICIA',
             'text' => 'Merci pour votre reservation'
         ]);

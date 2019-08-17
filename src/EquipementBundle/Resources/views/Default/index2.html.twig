@@ -489,7 +489,6 @@
                         <div class="post_info">
                             <span class="post_info_item post_info_posted">Posted: <a href="index.html" class="post_info_date date updated" itemprop="datePublished" content="2018-05-05">{{ equipement.datePost|date("F jS Y") }}</a></span>
                             <span class="post_info_item post_info_posted_by vcard" itemprop="author">by: <a href="{{ asset('assets/')}}author/admin/index.html" class="post_info_author">{{ equipement.idUser.username }}</a></span>
-                            <span class="post_info_item post_info_counters">	<a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 3" href="index.html#comments"><span class="post_counters_number">{{ commentaires|length }}</span></a>
 	</span>
                         </div>
 
@@ -565,31 +564,20 @@
 
                     </article> <!-- </article> class="itemscope post_item post_item_single post_featured_center post_format_standard post-92 post type-post status-publish format-standard has-post-thumbnail hentry category-aside-title category-aside-title-style category-blog-masonry-2-columns category-post-formats category-post-formats-with-sidebar tag-holiday tag-resort" itemscope itemtype="http://schema.org/Review"> -->	<section class="comments_wrap">
                         <div id="comments" class="comments_list_wrap">
-                            <h2 class="section_title comments_list_title">{{ commentaires|length }} Comments</h2>
                             <ul class="comments_list">
-                                {% for comment in commentaires %}
                                 <li id="comment-16" class="comment byuser comment-author-admin bypostauthor even thread-odd thread-alt depth-1 comment_item">
                                     <div class="comment_author_avatar"><img alt="" src="{{ asset('assets/')}}../abs.twimg.com/sticky/default_profile_images/default_profile_2.png" class="avatar avatar-wordpress-social-login avatar-140 photo" height="140" width="140" /></div>
                                     <div class="comment_content">
                                         <div class="comment_info">
-                                            <span class="comment_author">{{ comment.idUser.username }}<a href="{{ asset('assets/')}}author/admin/index.html"></a></span>
-                                            <span class="comment_date"><span class="comment_date_label">on</span> <span class="comment_date_value">{{ comment.dateCommentaire|date("F jS Y") }}</span></span>
 
 
                                         </div>
                                         <div class="comment_text_wrap">
-                                            <div class="comment_text"><p>{{ comment.texteCommentaire }}</p>
                                             </div>
                                         </div>
-                                        {% if app.user %}
-                                        {% if app.user.id == comment.idUser.id %}
-                                        <button   onclick="location.href='{{ path('commentaire_delete', { 'idCommentaire': comment.idCommentaire }) }}';">Supprimer</button>
-                                        <button onclick="btnclick({{ comment.idCommentaire }})">Modifier</button>
-                                        {% endif %}
-                                        {% endif %}
+
                                     </div>
                                 </li>
-                                {% endfor %}<!-- #comment-## -->
                             </ul><!-- .comments_list -->
                             <div class="comments_pagination"></div>
                         </div><!-- .comments_list_wrap -->
@@ -634,15 +622,8 @@
                                         </div>
 
                                         <!-- wsl_render_auth_widget -->
-{{ form_start(form) }}
                                         <p class="comments_notes">Your email address will not be published. Required fields are marked *</p><div class="comments_field comments_message"><label for="comment" class="required">Your Message</label>
-                                            {{ form_widget(form.texteCommentaire, {'attr': {'placeholder': 'COMMENT'} }) }}
-                                        </div>
-                                        <p class="wpgdprc-checkbox">
-                                            <input name="submit" type="submit" id="send_comment" class="submit" value="send message" />
 
-                                        </p>			</form>
-                               {{ form_end(form) }}
 
                                 </div><!-- #respond -->
                             </div>
@@ -846,11 +827,6 @@
 
     // When the user clicks on the button, open the modal
 
-    function btnclick(idCom){
-        modal.style.display = "block";
-        content = document.getElementById("editform2");
-        content.innerHTML= "<form method='POST' action='{{path("commentaire_edit") }}?id="+ idCom +"'> <div class='comments_field comments_message'><label for='comment' class='required'>Your Message</label><textarea id='comment' name='comment' placeholder='COMMENT' aria-required='true'></textarea></div> <br>           <input type='submit'></form>"
-    }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {

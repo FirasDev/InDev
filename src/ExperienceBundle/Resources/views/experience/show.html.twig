@@ -528,6 +528,7 @@
                                 <h1 class="product_title entry-title">{{ experience.titreExp  }}</h1><div class="woocommerce-product-details__short-description">
                                     <p>{{ experience.descExp | raw }}</p>
 
+
                                 </div>
                                 <div class="product_meta">
                                     <span class="posted_in">Pays : <a href="{{ path('pays_meteo', { 'name': experience.idPays.name }) }}" rel="tag">{{ experience.idPays.name }}</a> <i class="flag-icon flag-icon-tn"></i></span>
@@ -554,6 +555,7 @@
                             {%  endfor %}
 
 
+
                             <div class="woocommerce-tabs wc-tabs-wrapper">
                                 <ul class="tabs wc-tabs" role="tablist">
                                     <li class="description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
@@ -568,6 +570,7 @@
                                     <h2>Description</h2>
 
                                     <p>{{ experience.descExp }}.</p>
+                                    {{ socialButtons() }}
                                     <p>
                                 </div>
 

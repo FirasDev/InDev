@@ -44,6 +44,10 @@ facture:
   path:     /facture
   defaults: { _controller: EquipementBundle:Equipement:facture}
 
+back:
+  path:     /admin/equipements
+  defaults: { _controller: EquipementBundle:Equipement:back}
+
 rating:
   path:     /rating
   defaults: { _controller: EquipementBundle:Equipement:rating}

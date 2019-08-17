@@ -1,53 +1,191 @@
 
-    {% extends 'base.html.twig' %}
-    {% block body %}
+   {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .top_panel_wrap{
+            background: url({{ asset("assets/wp-content/uploads/2015/05/menu_bg.jpg") }}) no-repeat center top #63cac5;
+            margin-top: 0px !important;
+            margin-bottom: 20px !important;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+
+    <style>
+        @import url("https://fonts.googletapis.com/css?family=Open+Sans:300,400,600,700");
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Raleway, sans-serif;
+        }
+
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            background-image: url("{{ asset("assets/images/Buddy/small-group-tours-common-wanderer.jpg" ) }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blur {
+            opacity: 0.5;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            position: absolute;
+        }
+
+        .content {
+            display: block;
+        }
+        .content .text {
+            width: auto;
+            margin: 20px;
+            position: relative;
+            top: 40px;
+            z-index: 5;
+        }
+        .content .text p {
+            color: #FAF7F5;
+            font-size: 30px;
+        }
+        .content .Form {
+            size: 500px;
+            padding: 50px;
+            width: auto;
+            position: relative;
+            top: 50px;
+        }
+        .content .Form .blur1 {
+            opacity: 0.5;
+            width: 100%;
+            height: 500px;
+            position: relative;
+            background-color: white;
+            z-index: 1;
+            border-radius: 10px;
+        }
+        .content .Form form {
+            position: absolute;
+            z-index: 6;
+            top: 10%;
+            margin: 20px;
+        }
+        .content .Form form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            outline: none;
+            user-select: none;
+        }
+        .content .Form form button {
+            padding: 10px;
+            border-radius: 5px;
+            user-select: none;
+            outline: none;
+            margin-left: 20px;
+            font-size: 20px;
+            border: none;
+        }
+        .content .Form form button:hover {
+            background-color: #303F9F;
+            color: white;
+            font-weight: bold;
+        }
+
+        .message {
+            display: none;
+            position: absolute;
+            border: 2px solid;
+            z-index: 6;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .message p {
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        @media (min-width: 530px) {
+            .content {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .content .text {
+                width: 40%;
+                position: relative;
+                left: 5%;
+                padding-top: 70px;
+            }
+            .content .Form {
+                position: absolute;
+                right: 40px;
+                margin-left: 20px;
+                width: 40%;
+            }
+        }
+
+        table td {
+            color: #320300;
+        }
+    </style>
+
+    <br><br><br>
+
+    <div class="container"  style="clear:both;!important;margin-top: 200px;height: 800px;position: relative;">
 
 
 
-        <div class= "mainWrapper">
-
-
-            <div class= "blur"></div>
-            <div class="content">
-                <div class= "text"><p>Devenir un TravelBuddy n'est que le début</p></div>
-                <div class= "Form">
-                    <div class= "blur1"></div>
+        <div class= "blur"></div>
+        <div class="content">
+            <div class= "text"><p> Voyager tout seul ? Jamais ! <br> <br> Deviens un Travel Buddy </p></div>
+            <div class= "Form">
+                <div class= "blur1"></div>
 
 
 
 
-                    {{ form_start(form, {'attr': {'id': 'frm'}}) }}
-                    <div class="black">
-                    <table>
-                        <tr> <td>Description:</td><td> {{ form_widget(form.description) }}</td></tr>
-                        <tr><td>Destination preferé:</td><td>{{ form_widget(form.destination) }}</td></tr>
-                        <tr><td>Date Debut:</td><td>{{ form_widget(form.dateDebut) }}</td></tr>
-                        <tr><td>Date fin:</td><td>{{ form_widget(form.dateFin) }}</td></tr>
-                        <tr><td>Photo :</td><td>{{ form_widget(form.imageFile) }}</td></tr>
-                        <tr><td></td><td>{{ form_widget(form.Confirmer) }}</td></tr>
-                        <td><button><a href ="{{path('travelbuddy_BuddysList')}}">reteur</a></button></td>
+                {{ form_start(form, {'attr': {'id': 'frm'}}) }}
+                <table>
 
-
-                    </table>
-                    </div>
-                    {{ form_end(form) }}
-<center>
-                     <td><button><a href ="{{path('travelbuddy_BuddysList')}}">reteur</a></button></td>
-</center>
+                    <tr> <td>Description:</td><td> {{ form_widget(form.description) }}</td></tr>
+                    <tr><td>Destination preferé:</td><td>{{ form_widget(form.destination) }}</td></tr>
+                    <tr><td>Date Debut:</td><td>{{ form_widget(form.dateDebut) }}</td></tr>
+                    <tr><td>Date fin:</td><td>{{ form_widget(form.dateFin) }}</td></tr>
+                    <tr><td>Photo :</td><td>{{ form_widget(form.imageFile) }}</td></tr>
+                    <tr><td></td><td>{{ form_widget(form.Confirmer) }}</td></tr>
+                    <td><button><a href ="{{path('travelbuddy_BuddysList')}}">reteur</a></button></td>
                     <br>
 
 
+                </table>
+                {{ form_end(form) }}
 
 
-                    </form>
-                </div>
-            </div>
-            <div class= "message">
-                <p>
-                    Thanks for Enrolling with us, Check your mail for further information !!
-                </p>
+
+
+
+                </form>
             </div>
         </div>
+        <div class= "message">
+            <p>
+                Thanks for Enrolling with us, Check your mail for further information !!
+            </p>
+        </div>
+
 
 
 
@@ -64,146 +202,9 @@
 
 
         </script>
+    </div>
 
-
-        </center>
-        <style>
-            @import url("https://fonts.googletapis.com/css?family=Open+Sans:300,400,600,700");
-            * {
-                padding: 0;
-                margin: 0;
-                font-family: Raleway, sans-serif;
-            }
-
-            html, body {
-                min-height: 100% !important;
-                height: 100%;
-                overflow-x: hidden;
-                overflow-y: hidden;
-            }
-
-            .mainWrapper {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                z-index: 1;
-                background-image: url("{{ asset("assets/images/Buddy/small-group-tours-common-wanderer.jpg" ) }}");
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
-
-            .blur {
-                opacity: 0.5;
-                background-color: black;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                position: absolute;
-            }
-
-            .content {
-                display: block;
-            }
-            .content .text {
-                width: auto;
-                margin: 20px;
-                position: relative;
-                top: 40px;
-                z-index: 5;
-            }
-            .content .text p {
-                color: #FAF7F5;
-                font-size: 30px;
-            }
-            .content .Form {
-                size: 500px;
-                padding: 50px;
-                width: auto;
-                position: relative;
-                top: 50px;
-            }
-            .content .Form .blur1 {
-                opacity: 0.5;
-                width: 100%;
-                height: 500px;
-                position: relative;
-                background-color: white;
-                z-index: 1;
-                border-radius: 10px;
-            }
-            .content .Form form {
-                position: absolute;
-                z-index: 6;
-                top: 10%;
-                margin: 20px;
-            }
-            .content .Form form input {
-                margin-bottom: 10px;
-                padding: 10px;
-                width: 100%;
-                border-radius: 5px;
-                outline: none;
-                user-select: none;
-            }
-            .content .Form form button {
-                padding: 10px;
-                border-radius: 5px;
-                user-select: none;
-                outline: none;
-                margin-left: 20px;
-                font-size: 20px;
-                border: none;
-            }
-            .content .Form form button:hover {
-                background-color: #303F9F;
-                color: white;
-                font-weight: bold;
-            }
-
-            .message {
-                display: none;
-                position: absolute;
-                border: 2px solid;
-                z-index: 6;
-                top: 0;
-                width: 100%;
-                height: 100%;
-            }
-            .message p {
-                color: white;
-                font-size: 40px;
-                text-align: center;
-                padding-top: 40px;
-            }
-
-            @media (min-width: 530px) {
-                .content {
-                    display: flex;
-                    flex-wrap: wrap;
-                }
-                .content .text {
-                    width: 40%;
-                    position: relative;
-                    left: 5%;
-                    padding-top: 70px;
-                }
-                .content .Form {
-                    position: absolute;
-                    right: 40px;
-                    margin-left: 20px;
-                    width: 40%;
-                }
-            }
-
-
-            table td {
-                color: #320300;
-            }
-        </style>
-
-    {% endblock %}
-
+{% endblock %}
 
 
 

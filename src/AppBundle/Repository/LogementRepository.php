@@ -30,7 +30,31 @@ class LogementRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
+    public function findLogByID($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT c.idCite,c.nomCite,u.id,u.titre,u.description,u.prix,u.url 
+                            FROM AppBundle:Logement u JOIN AppBundle:Cite c WITH u.idCite = c.idCite
+                            WHERE  u.idUser='$id'");
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
 
+    public function findalllog(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT c.idCite,c.nomCite,u.id,u.titre,u.description,u.prix,u.url ,u.isdisponible 
+                            FROM AppBundle:Logement u JOIN AppBundle:Cite c WITH u.idCite = c.idCite");
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
+
+
+    public function findReslog(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT c.reference,u.titre,u.description,u.prix,u.url,u.id  
+                            FROM AppBundle:Logement u JOIN AppBundle:ReservationLogement c WITH c.idUser = u.idUser AND u.id=c.idLogement");
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
 
 
 }

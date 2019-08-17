@@ -10,21 +10,22 @@
                <table><tr>
                        <td>
             <div class="post_author_avatar"><a href="http://solaris.themerex.net/author/admin/" itemprop="image"><img id="Amitou" width="120" height="100"  src="{{ asset("assets/images/AmiticiaBot.gif" ) }}"></a></div>
-            <div class="post_author_info" itemprop="description"><span id='message' data-text=""> {% if app.user %}<p>Hey {{ app.user.firstname }} tu veux devenir mon ami?  <br> Amitoo est la pour vous aider à trouver votre destination une recherche vocale</p> {% else %} Amitoo est la pour vous aider a trouver votre destination avec une recherche vocale {% endif %}</span></div>
+            <div class="post_author_info" itemprop="description"><span id='message' data-text=""> {% if app.user %}<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hey {{ app.user.firstname }} <br> Amitoo est la pour vous aider</p> {% else %} Amitoo est la pour vous aider  {% endif %}</span></div>
                <img id="btnGiveCommand" width="60" height="70"  src="{{ asset("assets/images/Sound_Recorder.png" ) }}"> </section> </td>
-             <td> <div class="container" style="position: relative;float : top;" align="center">
-                   <input type="text"  placeholder="Chercher par destination" id="search-criteria"/>
-        </div> </td>
 
-            {% if app.user %}
-         <td>   <a> <div class="container" style="position: relative;float : right;">
-                     <a href="{{path('travelbuddy_AjoutTravelGroup')}}">
-                         <img class="img-responsive"  src="{{ asset("assets/images/CreerTravelgroupe.png" ) }}"></a>
-                </div></a></td>
-            {% endif %}
+<br><br><br><br><br><br><br><br><br>
+        {% if app.user %}
+            <a> <div class="container" style="position: relative;float : right;">
+                    <a  href="{{path('travelbuddy_AjoutTravelGroup')}}">
+                        <img alt='' align="right"   src="{{ asset("assets/images/CreerTravelgroupe.png" ) }}"></a>
+                </div></a>
+        {% endif %}
         </section>
     </tr>
 </table>
+
+
+
 
 
 

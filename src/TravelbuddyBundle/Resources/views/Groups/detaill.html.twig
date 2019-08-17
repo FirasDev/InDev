@@ -377,78 +377,89 @@
                     <a href="#" class="menu_main_responsive_button icon-menu-1"></a>
 
                     <nav role="navigation" class="menu_main_nav_area">
-                        <ul id="menu_main" class="menu_main_nav"><li id="menu-item-1745" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-1745"><a href="../../index.html">Home</a>
+                        <ul id="menu_main" class="menu_main_nav">
+
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li id="menu-item-179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-179"><a href="{{ path('experience_list_back') }}">Dashboard</a>
+                                </li>
+                            {% endif %}
+
+                            <li id="menu-item-179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-179"><a href="{{ path('experience_list') }}">Experience</a>
                                 <ul class="sub-menu">
-                                    <li id="menu-item-1751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-1751"><a href="../../index.html">Homepage default</a></li>
-                                    <li id="menu-item-1750" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1750"><a href="../../homepage-2/index.html">Homepage Angles</a></li>
-                                    <li id="menu-item-1749" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1749"><a href="../../homepage-3/index.html">Homepage Boxes</a></li>
+                                    <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="{{ path('experience_list') }}">Découvrir</a></li>
+                                    <li id="menu-item-791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-791"><a href="{{ path('experience_current_user') }}">Mes Experiences</a></li>
+                                    <li id="menu-item-791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-791"><a href="{{ path('experience_current_user') }}">Mes Favoris</a></li>
+                                    <li id="menu-item-1303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1303"><a href="{{ path('experience_new') }}">Ajouter Experience</a></li>
+                                    <li id="menu-item-543" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-543"><a href="{{ path('pays_list') }}">Pays</a></li>
+                                    <li id="menu-item-1907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1907"><a href="faqs/index.html">Jouer</a></li>
                                 </ul>
                             </li>
-                            <li id="menu-item-179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-179"><a href="#">Features</a>
+                            <li id="menu-item-1754" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1754"><a href="{{ path('galleryEvent') }}">Evennement</a>
                                 <ul class="sub-menu">
-                                    <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="../../overview-page/index.html">Overview Page</a></li>
-                                    <li id="menu-item-791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-791"><a href="../../about-us/index.html">About Us</a></li>
-                                    <li id="menu-item-1303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1303"><a href="../../team/index.html">Our team</a></li>
-                                    <li id="menu-item-543" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-543"><a href="../../not_existing_page/index.html">Page 404</a></li>
-                                    <li id="menu-item-1907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1907"><a href="../../faqs/index.html">FAQ’s</a></li>
-                                    <li id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-178"><a href="../../shortcodes/index.html">Shortcodes</a></li>
-                                    <li id="menu-item-536" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-536"><a href="../../typography/index.html">Typography</a></li>
-                                    <li id="menu-item-1793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1793"><a href="../../under-construction/index.html">Under Construction</a></li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1795"><a data-toggle="modal" data-target="#createeventmodal">Nouveau Evennement</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1796"><a href="{{ path('showEvent') }}">Mes Evennements</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1796"><a href="{{ path('reservation') }}">Mes Reservation</a></li>
+
                                 </ul>
                             </li>
-                            <li id="menu-item-1754" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1754"><a href="#">Gallery</a>
+                            <li id="menu-item-13"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-13">
+                                <a href="{{ path('accueil_blog_root') }}">Blog</a>
                                 <ul class="sub-menu">
-                                    <li id="menu-item-1795" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1795"><a href="../../gallery/index.html">Polaroids Gallery</a></li>
-                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1796"><a href="../../category/grid-alternative/index.html">Grid Alternative</a></li>
-                                    <li id="menu-item-1797" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1797"><a href="#">Classic Style</a>
+
+                                    <li id="menu-item-167"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1795">
+                                        <a href="{{ path('accueil_blog_root') }}">Accueil Blogs</a>
+
+
+                                    <li id="menu-item-1871"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1871">
+                                        <a href="#">Blogs</a>
                                         <ul class="sub-menu">
-                                            <li id="menu-item-1798" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1798"><a href="../../category/gallery-classic-2-columns/index.html">2 Columns</a></li>
-                                            <li id="menu-item-1799" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1799"><a href="../../category/gallery-classic-2-columns/gallery-classic-3-columns/index.html">3 Columns</a></li>
-                                            <li id="menu-item-1800" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1800"><a href="../../category/gallery-classic-2-columns/gallery-classic-4-columns/index.html">4 Columns</a></li>
+
+                                            <li id="menu-item-1872"
+                                                class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1872">
+                                                <a href="{{ path('ajouter_blog_root') }}">Ajouter Blogs</a>
+                                            <li id="menu-item-1873"
+                                                class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1873">
+                                                <a href="{{ path('mesBlog_root') }}">Mes Blogs</a>
+                                            </li>
                                         </ul>
                                     </li>
-                                    <li id="menu-item-1846" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1846"><a href="#">Masonry Style</a>
+                                    <li id="menu-item-1865"
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1865">
+                                        <a href="#">Forum</a>
                                         <ul class="sub-menu">
-                                            <li id="menu-item-1847" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1847"><a href="../../category/gallery-masonry-2-columns/index.html">2 Colums</a></li>
-                                            <li id="menu-item-1848" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1848"><a href="../../category/gallery-masonry-2-columns/gallery-masonry-3-columns/index.html">3 Columns</a></li>
-                                            <li id="menu-item-1849" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1849"><a href="../../category/gallery-masonry-2-columns/gallery-masonry-4-columns/index.html">4 Columns</a></li>
-                                        </ul>
-                                    </li>
-                                    <li id="menu-item-1860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1860"><a href="#">Grid Style</a>
-                                        <ul class="sub-menu">
-                                            <li id="menu-item-1861" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861"><a href="../../category/gallery-grid-2-columns/index.html">2 Columns</a></li>
-                                            <li id="menu-item-1862" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1862"><a href="../../category/gallery-grid-2-columns/gallery-grid-3-columns/index.html">3 Columns</a></li>
-                                            <li id="menu-item-1863" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1863"><a href="../../category/gallery-grid-2-columns/gallery-grid-4-columns/index.html">4 Columns</a></li>
-                                        </ul>
-                                    </li>
-                                    <li id="menu-item-1868" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1868"><a href="../../2015/05/11/barbados-a-superyacht-destination/index.html">Gallery Post</a></li>
-                                </ul>
-                            </li>
-                            <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-13"><a href="../../blog-streampage/index.html">Blog</a>
-                                <ul class="sub-menu">
-                                    <li id="menu-item-167" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-167"><a href="#">Post Formats</a>
-                                        <ul class="sub-menu">
-                                            <li id="menu-item-51" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-51"><a href="../../category/post-formats/post-formats-with-sidebar/index.html">With Sidebar</a></li>
-                                            <li id="menu-item-50" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-50"><a href="../../category/post-formats/index.html">Without sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li id="menu-item-1871" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1871"><a href="#">Blog Style</a>
-                                        <ul class="sub-menu">
-                                            <li id="menu-item-2029" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2029"><a href="../../category/blog-masonry-2-columns/index.html">Masonry Style</a></li>
-                                            <li id="menu-item-1872" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1872"><a href="../../category/aside-title/index.html">Aside Title</a></li>
-                                            <li id="menu-item-1873" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1873"><a href="../../category/aside-title-style/index.html">Aside Title Style</a></li>
-                                        </ul>
-                                    </li>
-                                    <li id="menu-item-1865" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1865"><a href="#">Blog Post</a>
-                                        <ul class="sub-menu">
-                                            <li id="menu-item-1866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1866"><a href="../../2017/11/11/bernardus/index.html">Standard Post</a></li>
-                                            <li id="menu-item-1867" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1867"><a href="../../2018/05/05/las-terrazas-resort/index.html">Standard Post with Sidebar</a></li>
+                                            <li id="menu-item-1866"
+                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1866">
+                                                <a href="{{ path('group_homepage') }}">Questions</a></li>
+                                            <li id="menu-item-1867"
+                                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1867">
+                                                <a href="2018/05/05/las-terrazas-resort/index.html">Mes Questions</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li id="menu-item-1753" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-1753"><a href="../../shop/index.html">Shop</a></li>
-                            <li id="menu-item-54" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54"><a href="../../contact-us/index.html">Contact</a></li>
+                            <li id="menu-item-1753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1753"><a href="{{path('travelbuddy_BuddysIndex')}}">TravelBuddy</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="{{path('travelbuddy_BuddysList')}}">TravelBuddies</a></li>
+                                    <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="{{path('travelbuddy_GroupsList')}}">TravelGroups</a></li>
+                                    {% if app.user %}
+                                        <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="{{path('travelbuddy_BuddysMyList')}}">Mon TravelBuddy profil</a></li>
+                                        <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="{{path('travelbuddy_MyGroupsList')}}">Mes Travel groupes</a></li>
+                                        <li id="menu-item-2064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2064"><a href="{{ url('fos_message_inbox') }}">{%  trans from 'FOSMessageBundle' %}Mes Messages{% endtrans %}</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            <li id="menu-item-1753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1753"><a href="{{ path('showall') }}">Logement</a>
+                                <ul class="sub-menu">
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1795"><a href="{{ path('add_logement') }}">Nouveau Logement</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1796"><a href="{{ path('mes_logements') }}">Mes Logements</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1796"><a href="{{ path('reservations') }}">Mes Reservations</a></li>
+
+                                </ul>
+                            </li>
+                            <li id="menu-item-1753" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1753"><a href="{{ path('shop') }}">Equipement</a></li>
                         </ul>						</nav>
                 </div>
             </div>

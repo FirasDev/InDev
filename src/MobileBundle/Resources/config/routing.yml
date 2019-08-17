@@ -1,0 +1,67 @@
+mobile_homepage:
+    path:     /newlog
+    defaults: { _controller: MobileBundle:Logement:addLogement }
+
+showcitiy:
+    path:     /showcity
+    defaults: { _controller: MobileBundle:Logement:show }
+
+showlog:
+    path:     /showlog
+    defaults: { _controller: MobileBundle:Logement:showlog }
+
+showalllog:
+    path:     /showalllog
+    defaults: { _controller: MobileBundle:Logement:showall }
+
+deletelog:
+    path:     /deletelog
+    defaults: { _controller: MobileBundle:Logement:delete }
+
+reservlog:
+    path:     /reservlog
+    defaults: { _controller: MobileBundle:Logement:reservlog }
+
+deletereserv:
+    path:     /deletereserv
+    defaults: { _controller: MobileBundle:Logement:deleteReservation }
+
+sowreservation:
+    path:     /showreservation
+    defaults: { _controller: MobileBundle:Logement:showallreserv }
+
+reserved_events:
+    path:     /showReservation
+    defaults: { _controller: MobileBundle:event:showReservation }
+cancel_reservation:
+    path:     /cancelReservation
+    defaults: { _controller: MobileBundle:event:cancelReservation }
+add:
+    path:     /CreatEvent
+    defaults: { _controller: MobileBundle:event:CreatEvent }
+display:
+    path:     /showEvent
+    defaults: { _controller: MobileBundle:event:showEvent }
+delete:
+    path:     /delete
+    defaults: { _controller: MobileBundle:event:delete }
+other_Events:
+    path:     /showOtherEvent
+    defaults: { _controller: MobileBundle:event:showOtherEvent }
+reserver_event:
+    path:     /reserverEvent
+    defaults: { _controller: MobileBundle:event:reserverEvent }
+search_byname:
+    path:     /showEventByCity
+    defaults: { _controller: MobileBundle:event:showEventByCity }
+get_allEvents:
+    path:     /showAllEvents
+    defaults: { _controller: MobileBundle:event:showAllEvents }
+show_Recommended:
+     path:     /showRecommended
+     defaults: { _controller: MobileBundle:event:showRecommended }
+show_allCity:
+    path:     /showAllCity
+    defaults: { _controller: MobileBundle:event:showAllCity }
+
+

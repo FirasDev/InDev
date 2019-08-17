@@ -11,7 +11,7 @@ travelbuddy_BuddysMyList:
     defaults: { _controller: TravelbuddyBundle:Buddys:mylist }
 
 
-travelbuddy_AjoutTravelBuddytravelbuddy_AjoutTravelBuddy:
+travelbuddy_AjoutTravelBuddy:
     path:     /buddys/ajout
     defaults: { _controller: TravelbuddyBundle:Buddys:ajout }
 
@@ -99,6 +99,49 @@ travelbuddy_AdminGroup:
 travelbuddy_UpdateGroupAdmin:
      path:     /admin/updateGroupe/{id}
      defaults: { _controller: TravelbuddyBundle:Groups:updateAdmin }
+
+travelbuddy_DeleteGroupAdmin:
+     path:     /admin/DeleteGroupe/{id}
+     defaults: { _controller: TravelbuddyBundle:Groups:deleteAdmin   }
+
+
+travelbuddy_BuddyDeleteAdmin:
+     path:     /admin/DeletebudddyAdmin/{id}
+     defaults: { _controller: TravelbuddyBundle:Buddys:adminDelete   }
+
+Amito:
+     path:     /amito
+     defaults: { _controller: TravelbuddyBundle:Groups:amito   }
+
+
+json_add:
+    path:     /jsonAdd/{title}/{destination}/{plan}/{dateDeb}
+    defaults: { _controller: TravelbuddyBundle:Groups:jsonAdd }
+
+
+jsonList:
+     path:     /groupList
+     defaults: { _controller: TravelbuddyBundle:Groups:jsonlist   }
+
+jsonSearch:
+     path:     /groupSearch/{destination}
+     defaults: { _controller: TravelbuddyBundle:Groups:rechercheJson   }
+
+
+jsonDelete:
+     path:     /deleteGroup
+     defaults: { _controller: TravelbuddyBundle:Groups:rechercheJson   }
+
+
+jsonImages:
+     path:     /imagesTop
+     defaults: { _controller: TravelbuddyBundle:Groups:Images   }
+
+jsonDel:
+     path:     /deleteMobile/{idT}
+     defaults: { _controller: TravelbuddyBundle:Groups:deleteMobile   }
+
+
 
 
 

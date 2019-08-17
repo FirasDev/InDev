@@ -15,13 +15,67 @@ class EvenementRepository extends \Doctrine\ORM\EntityRepository
     public function findRecommended(){
 
         $qb=$this->getEntityManager()
-            ->createQuery("SELECT e.idEvent,e.nom,e.type,e.dateDebut,e.url,e.rate
+            ->createQuery("SELECT  e.idEvent,e.nom,e.type,e.dateDebut,e.dateFin,e.description,e.rate,e.url,e.frais,e.nbrPlace,e.lieu
                             FROM  AppBundle:Evenement e 
                             ORDER BY e.rate DESC" );
 
         return $qb->getResult();
 
     }
+
+    public function findEventByID($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT e.idEvent,e.nom,e.type,e.dateDebut,e.dateFin,e.description,e.rate,e.url,e.frais,e.nbrPlace,e.lieu
+                            FROM  AppBundle:Evenement e where e.idUser = :userid")->setParameter("userid",$id);
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
+
+    public function findOtherEventByID($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT e.idEvent,e.nom,e.type,e.dateDebut,e.dateFin,e.description,e.rate,e.url,e.frais,e.nbrPlace,e.lieu
+                            FROM  AppBundle:Evenement e where e.idUser != :userid")->setParameter("userid",$id);
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
+
+
+
+    public function findReservationByID($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT e.idEvent,e.type,e.nom,e.dateDebut,e.dateFin,e.description,e.rate,e.url,e.frais,e.nbrPlace,r.idReservation,r.frais,r.idEvent
+                            FROM  AppBundle:Evenement e JOIN AppBundle:Reservation r WITH e.idEvent = r.idEvent where r.idUser = :userid")->setParameter("userid",$id);
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
+
+
+    public function findEventByCity($lieu){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT e.lieu,e.idEvent,e.nom,e.type,e.dateDebut,e.dateFin,e.description,e.rate,e.url,e.frais,e.nbrPlace
+                            FROM  AppBundle:Evenement e where e.lieu = :name")->setParameter("name",$lieu);
+        if(count($query->getArrayResult()) > 0) return $query->getResult();
+        return null;
+    }
+
+    public function findAllEvents(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT e.lieu,e.idEvent,e.nom,e.type,e.dateDebut,e.dateFin,e.description,e.rate,e.url,e.frais,e.nbrPlace
+                            FROM  AppBundle:Evenement e");
+     return $query->getResult();
+
+    }
+
+    public function findAllCity(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT e.nomCite,e.idCite
+                            FROM  AppBundle:Cite e");
+        return $query->getResult();
+
+    }
+
+
+
 
 
 

@@ -337,7 +337,7 @@
 
                            <!-- or (event.dateFin< { date }})-->
 
-                                {% if((event.nbrPlace <= 0) or (event.dateFin < d)) %}
+                                {% if((event.nbrPlace <= 0) ) %}
                                 <p> this event is full please check other events from <a href="{{ path('galleryEvent') }}">HERE</a></p>
                             {% else %}
                                 <form method="POST">

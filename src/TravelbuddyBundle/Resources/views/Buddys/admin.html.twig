@@ -30,7 +30,7 @@
                 <td>{{ t.dateDebut|date  ('Y-m-d') }}  </td>
                 <td> {{ t.dateDebut|date  ('Y-m-d') }}    </td>
                 <td><button class="btn btn-primary"><a href="{{path('travelbuddy_UpdateTravelBuddy',{'id':t.idTravelBuddy})}}">Modifier</a></button></td>
-            <td><button type="button" class="btn btn-danger" > <a href="{{path('travelbuddy_DeleteBuddy',{'id':t.idTravelBuddy})}}">Supprimer groupe</a></button></td>
+            <td><button type="button" class="btn btn-danger" > <a href="{{path('travelbuddy_BuddyDeleteAdmin',{'id':t.idTravelBuddy})}}">Supprimer Buddy</a></button></td>
             </tr>
         {% endfor %}
     </table>

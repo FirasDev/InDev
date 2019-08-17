@@ -177,4 +177,19 @@ public function adminAction()
 }
 
 
+    public function adminDeleteAction($id) {
+        //entity manager
+        $em=$this->getDoctrine()->getManager() ;
+        //recu de l'objet avec $id
+        $buddy=$this->getDoctrine()
+            ->getRepository(TravelBuddy::class)
+            ->find($id);
+        //delete object from ORM
+        $em->remove($buddy);
+        //delete from the data base
+        $em->flush();
+
+        return $this->redirectToRoute('travelbuddy_AdminBuddy') ;
+    }
+
 }

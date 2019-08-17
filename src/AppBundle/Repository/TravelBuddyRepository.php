@@ -25,6 +25,19 @@ class TravelBuddyRepository extends EntityRepository
     }
 
 
+    public function getFiras() {
+        $query=$this
+            ->getEntityManager()->createQuery("select  t  from AppBundle:TravelBuddy t WHERE t.idUser = 16 ") ;
+
+
+        $query->setMaxResults(1);
+
+        $buddy =$query->getOneOrNullResult() ;
+
+        return  $buddy  ;
+
+    }
+
 
 
 

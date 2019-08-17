@@ -18,6 +18,7 @@ class TravelGroupRepository extends EntityRepository
         return $members ;
     }
 
+
     public function getGroupByDestination($dest){
 
      $dest1 = strtolower($dest) ;
@@ -52,7 +53,7 @@ class TravelGroupRepository extends EntityRepository
 
 
           $query3=$this
-         ->getEntityManager()->createQuery("select t from AppBundle:TravelGroup t WHERE t.destination in (select p.name from AppBundle:Pays p WHERE abs(p.phonecode -'$code')< 5000)") ;
+         ->getEntityManager()->createQuery("select t from AppBundle:TravelGroup t WHERE t.destination in (select p.name from AppBundle:Pays p WHERE abs(p.phonecode -'$code')< 30)") ;
 
           $groups = $query3->getResult() ;
 
@@ -62,6 +63,37 @@ class TravelGroupRepository extends EntityRepository
 
 
  }
+
+    public function JsonTest(){
+
+
+        $query=$this
+            ->getEntityManager()->createQuery("select t.title , t.idTravelGroup, t.destination , t.plan,t.image from AppBundle:TravelGroup t") ;
+        $members = $query->getResult() ;
+        return $members ;
+    }
+
+
+    public function getGroupByDestinationJson($dest){
+
+        $dest1 = strtolower($dest) ;
+        $query=$this
+            ->getEntityManager()->createQuery("select  t.title , t.destination , t.plan, t.dateDebut , t.dateFin   from AppBundle:TravelGroup t   WHERE Locate(t.destination,'$dest1')> 0") ;
+        $destinations = $query->getResult() ;
+        return $destinations ;
+    }
+
+
+    //this function for static add user for json //
+    public function getFias(){
+
+
+        $query=$this
+            ->getEntityManager()->createQuery("select  t  from AppBundle:TravelB t   WHERE Locate(t.destination,'$dest1')> 0") ;
+        $destinations = $query->getResult() ;
+        return $destinations ;
+    }
+
 
 
 
